@@ -18,11 +18,20 @@
   
   swaync.enable = true;
   
-  gtk = {
-    cursorTheme = {
-      name = "Catppuccin-Macchiato-Sapphire-Cursors";
-      package = pkgs.catppuccin-cursors.macchiatoSapphire;
-    };
+  # gtk = {
+  #   cursorTheme = {
+  #     name = "Catppuccin-Macchiato-Sapphire-Cursors";
+  #     package = pkgs.catppuccin-cursors.macchiatoSapphire;
+  #     size = 16;
+  #   };
+  # };
+  
+  home.pointerCursor = {
+    gtk.enable = true;
+    x11.enable = true;
+    name = "Catppuccin-Macchiato-Sapphire-Cursors";
+    package = pkgs.catppuccin-cursors.macchiatoSapphire;
+    size = 32;
   };
   
   # Home Manager needs a bit of information about you and the paths it should
