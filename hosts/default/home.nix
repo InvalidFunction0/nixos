@@ -18,6 +18,13 @@
   
   swaync.enable = true;
   
+  gtk = {
+    cursorTheme = {
+      name = "Catppuccin-Macchiato-Sapphire-Cursors";
+      package = pkgs.catppuccin-cursors.macchiatoSapphire;
+    };
+  };
+  
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "ayaan";
