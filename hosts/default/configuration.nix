@@ -156,6 +156,7 @@
     wget
     zsh oh-my-zsh zsh-completions zsh-powerlevel10k zsh-syntax-highlighting zsh-history-substring-search
     libnotify
+    albert
   ];
 
   fonts.packages = with pkgs; [
