@@ -61,6 +61,18 @@
     variant = "";
   };
 
+  services.libinput = {
+    enable = true;
+    
+    mouse = {
+      accelProfile = "flat";
+    };
+    
+    touchpad = {
+      accelProfile = "flat";
+    };
+  };
+  
   # Configure console keymap
   console.keyMap = "uk";
 
@@ -89,15 +101,6 @@
   # Enable zsh
   programs.zsh = {
     enable = true;
-  #   syntaxHighlighting.enable = true;
-  #   ohMyZsh = {
-  #     enable = true;
-  #     plugins = [
-  #       "git"
-  #       "history-substring-search"
-  #     ];
-  #     theme = "awesomepanda";
-  #   };
   };
   
   environment.pathsToLink = [ "/share/zsh" ];
@@ -158,6 +161,7 @@
     libnotify
     albert
     catppuccin-cursors.macchiatoSapphire
+    krita
   ];
 
   fonts.packages = with pkgs; [
