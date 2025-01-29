@@ -29,9 +29,13 @@
   home.pointerCursor = {
     gtk.enable = true;
     x11.enable = true;
-    name = "Catppuccin-Macchiato-Sapphire-Cursors";
+    name = "catppuccin-macchiato-sapphire-cursors";
     package = pkgs.catppuccin-cursors.macchiatoSapphire;
     size = 32;
+    hyprcursor = {
+      enable = true;
+      size = 32;
+    };
   };
   
   # Home Manager needs a bit of information about you and the paths it should
