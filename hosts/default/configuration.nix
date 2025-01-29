@@ -28,7 +28,16 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+    dns = "default";
+    wifi.powersave = false;
+  };
+  
+  hardware = {
+    enableRedistributableFirmware = true;
+    enableAllFirmware = true;
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/London";
@@ -142,7 +151,7 @@
   environment.systemPackages = with pkgs; [
     vim neovim zed-editor
     zoxide
-    lf cmatrix imagemagick htop btop
+    lf cmatrix imagemagick htop btop cava
     discord
     swww hyprpaper hyprlock hyprshot
     nautilus
