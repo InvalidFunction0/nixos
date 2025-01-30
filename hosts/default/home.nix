@@ -1,13 +1,14 @@
 { config, pkgs, ... }:
 
 {
-  
+
   imports = [
     ../../modules/homeManager/shell/zsh.nix
     ../../modules/homeManager/shell/zoxide.nix
     ../../modules/homeManager/sys/swaync.nix
+    ../../modules/homeManager/editors/zed.nix
   ];
-  
+
   zsh.enable = true;
   zoxide = {
     enable = true;
@@ -15,9 +16,15 @@
   };
   programs.zoxide.enable = true;
   programs.fzf.enable = true;
-  
+
   swaync.enable = true;
-  
+
+  zed = {
+    enable = true;
+    vim_mode.enable = true;
+    extensions = [ "nix" "catppuccin" ];
+  };
+
   # gtk = {
   #   cursorTheme = {
   #     name = "Catppuccin-Macchiato-Sapphire-Cursors";
@@ -25,7 +32,7 @@
   #     size = 16;
   #   };
   # };
-  
+
   home.pointerCursor = {
     gtk.enable = true;
     x11.enable = true;
@@ -37,7 +44,7 @@
       size = 32;
     };
   };
-  
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "ayaan";
