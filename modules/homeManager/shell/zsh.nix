@@ -1,14 +1,16 @@
 { inputs, lib, config, ... }:
 
+with lib;
+
 {
   options = {
-    zsh.enable = lib.mkEnableOption "enables zsh module";
+    zsh.enable = mkEnableOption "enables zsh module";
   };
   
   config = {
     programs.zsh = {
       enable =
-        lib.mkIf config.zsh.enable true;
+        mkIf config.zsh.enable true;
       
       enableCompletion = true;
       autosuggestion.enable = true;

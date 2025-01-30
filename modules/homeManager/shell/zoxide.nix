@@ -1,17 +1,19 @@
-{ inputs, lib, config, pkgs, ... }:
+{ inputs, lib, config, ... }:
+
+with lib;
 
 {
   options = {
-    zoxide.enable = lib.mkEnableOption "enable zoxide module";
-    zoxide.replacecd = lib.mkEnableOption "enable `cd` being aliased to `z`";
+    zoxide.enable = mkEnableOption "enable zoxide module";
+    zoxide.replacecd = mkEnableOption "enable `cd` being aliased to `z`";
   };
   
-  config = lib.mkIf config.zoxide.enable {
+  config = mkIf config.zoxide.enable {
     programs.zoxide = {
       enable = true;
       enableZshIntegration = true;
       options = [
-        ( lib.mkIf config.zoxide.replacecd "--cmd cd" )
+        ( mkIf config.zoxide.replacecd "--cmd cd" )
       ];
     };
   };
