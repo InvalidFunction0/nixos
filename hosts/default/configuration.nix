@@ -149,7 +149,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim neovim zed-editor
+    vim neovim
+    # zed-editor
     zoxide
     lf cmatrix imagemagick htop btop cava
     discord
