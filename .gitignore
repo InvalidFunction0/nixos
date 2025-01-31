@@ -1,0 +1,7 @@
+**/testfile--*
+**/*--testfile.*
+
+**/ignore--*
+**/*--ignore.*
+
+**/.env
