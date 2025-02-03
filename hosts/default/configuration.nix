@@ -177,10 +177,19 @@
     krita
     bitwarden
   ];
-
-  fonts.packages = with pkgs; [
-    cascadia-code
-  ];
+  
+  fonts = {
+    enableDefaultPackages = true;
+    packages = with pkgs; [
+      nerd-fonts.caskaydia-cove
+    ];
+    
+    fontconfig = {
+      defaultFonts = {
+        monospace = [ "Cascadia Code" ];
+      };
+    };
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

@@ -29,10 +29,21 @@ with lib;
         # show_whitespaces = "all";
         hour_format = "hour24";
 
-        font_family = "Cascadia Code";
-        ui_font_size = 16;
+        buffer_font_family = "Cascadia Code";
         buffer_font_size = 16;
         buffer_font_features = {
+          calt = true;
+        };
+        
+        ui_font_family = "Cascadia Code";
+        ui_font_size = 16;
+        ui_font_features = {
+          calt = true;
+        };
+        
+        terminal_font_family = "Cascadia Code";
+        terminal_font_size = 16;
+        terminal_font_features = {
           calt = true;
         };
 
