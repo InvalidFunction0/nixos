@@ -37,6 +37,7 @@
   hardware = {
     enableRedistributableFirmware = true;
     enableAllFirmware = true;
+    graphics.enable = true;
   };
 
   # Set your time zone.
@@ -172,6 +173,7 @@
     albert
     catppuccin-cursors.macchiatoSapphire
     krita
+    bitwarden
   ];
 
   fonts.packages = with pkgs; [

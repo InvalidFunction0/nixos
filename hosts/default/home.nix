@@ -32,6 +32,15 @@
   #     size = 16;
   #   };
   # };
+  
+  programs.git = {
+    enable = true;
+    userName = "Ayaan";
+    userEmail = "ayaan.waqas@outlook.com";
+    extraConfig = {
+      init.defaultBranch = "main";
+    };
+  };
 
   home.pointerCursor = {
     gtk.enable = true;
