@@ -152,6 +152,7 @@
   environment.systemPackages = with pkgs; [
     rustup
     vim neovim
+    vscode
     # zed-editor
     zoxide
     lf cmatrix imagemagick htop btop cava
