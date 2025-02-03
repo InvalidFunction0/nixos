@@ -150,6 +150,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    rustup
     vim neovim
     # zed-editor
     zoxide
