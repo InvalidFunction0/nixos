@@ -30,20 +30,14 @@ with lib;
         hour_format = "hour24";
 
         buffer_font_family = "Cascadia Code";
-        buffer_font_size = 16;
+        buffer_font_size = 14;
         buffer_font_features = {
           calt = true;
         };
         
         ui_font_family = "Cascadia Code";
-        ui_font_size = 16;
+        ui_font_size = 14;
         ui_font_features = {
-          calt = true;
-        };
-        
-        terminal_font_family = "Cascadia Code";
-        terminal_font_size = 16;
-        terminal_font_features = {
           calt = true;
         };
 
@@ -63,10 +57,11 @@ with lib;
         };
         
         terminal = {
-          font_family = "FiraCode Nerd Font";
+          font_family = "Cascadia Code";
           font_features = {
             calt = true;
           };
+          font_size = 14;
           shell = "system";
         };
         
