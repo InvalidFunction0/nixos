@@ -177,6 +177,7 @@
     catppuccin-cursors.macchiatoSapphire
     krita
     bitwarden
+    neofetch
   ];
 
   fonts = {
