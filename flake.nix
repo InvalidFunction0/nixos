@@ -33,6 +33,14 @@
       specialArgs = { inherit inputs; };
       modules = [
         {
+          nixpkgs.config = {
+            allowUnfree = true;
+            allowUnfreePredicate = pkg: true;
+            allowUnsupportedSystem = true;
+            allowBroken = true;
+          };
+        }
+        {
           nixpkgs.overlays = [
             # pkgs.firefox-bin
             inputs.nixpkgs-firefox-darwin.overlay
@@ -42,7 +50,9 @@
             # "https://github.com/ne9z/dotfiles-flake/blob/d3159df136294675ccea340623c7c363b3584e0d/configuration.nix"
             (final: prev: {
               unstable =
-                import inputs.nixpkgs-unstable { system = prev.system; };
+                import inputs.nixpkgs-unstable {
+                  system = prev.system;
+                };
             })
 
             (final: prev: {
@@ -60,6 +70,7 @@
           ];
         }
         ./modules/darwin.nix
+        ./modules/systemPackages.nix
         home-manager.darwinModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
@@ -69,6 +80,7 @@
             # hack around nix-home-manager causing infinite recursion
             isLinux = false;
           };
+          # home-manager.users."ayaan" = import ./hosts/default/home.nix;
         }
       ];
     };

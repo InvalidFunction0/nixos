@@ -9,7 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ../../modules/nixos/hyprland.nix
-      ../../modules/darwin.nix
+      ../../modules/systemPackages.nix
       inputs.home-manager.nixosModules.default
     ];
 
@@ -147,38 +147,6 @@
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in firewall for Source Dedicated Server
   };
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    rustup
-    vim neovim
-    vscode
-    # zed-editor
-    zoxide
-    lf cmatrix imagemagick htop btop cava
-    discord
-    swww hyprpaper hyprlock hyprshot
-    nautilus
-    rofi
-    ( waybar.overrideAttrs
-      (oldAttrs: {
-        mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-      })
-    ) wlogout wl-clipboard
-    gradle gcc git gh
-    ghostty
-    bibata-cursors
-    pavucontrol
-    wget
-    zsh oh-my-zsh zsh-completions zsh-powerlevel10k zsh-syntax-highlighting zsh-history-substring-search
-    libnotify
-    albert
-    catppuccin-cursors.macchiatoSapphire
-    krita
-    bitwarden
-    neofetch
-  ];
 
   fonts = {
     enableDefaultPackages = true;

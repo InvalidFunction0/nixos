@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, home, ... }:
 
 {
 
@@ -32,7 +32,7 @@
   #     size = 16;
   #   };
   # };
-  
+
   programs.git = {
     enable = true;
     userName = "Ayaan";
@@ -57,7 +57,11 @@
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "ayaan";
-  home.homeDirectory = "/home/ayaan";
+  home.homeDirectory =
+        if pkgs.system == "aarch64-darwin"
+        then builtins.toPath "/Users/ayaanwaqas"
+        else builtins.toPath "/home/ayaan"
+  ;
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
