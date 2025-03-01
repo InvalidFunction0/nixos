@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ../../modules/nixos/hyprland.nix
+      ../../modules/darwin.nix
       inputs.home-manager.nixosModules.default
     ];
 
@@ -33,7 +34,7 @@
     dns = "default";
     wifi.powersave = false;
   };
-  
+
   hardware = {
     enableRedistributableFirmware = true;
     enableAllFirmware = true;
@@ -73,16 +74,16 @@
 
   services.libinput = {
     enable = true;
-    
+
     mouse = {
       accelProfile = "flat";
     };
-    
+
     touchpad = {
       accelProfile = "flat";
     };
   };
-  
+
   # Configure console keymap
   console.keyMap = "uk";
 
@@ -112,7 +113,7 @@
   programs.zsh = {
     enable = true;
   };
-  
+
   environment.pathsToLink = [ "/share/zsh" ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -177,13 +178,13 @@
     krita
     bitwarden
   ];
-  
+
   fonts = {
     enableDefaultPackages = true;
     packages = with pkgs; [
       nerd-fonts.caskaydia-cove
     ];
-    
+
     fontconfig = {
       defaultFonts = {
         monospace = [ "Cascadia Code" ];
@@ -217,5 +218,5 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
-
+  nix-darwin.system.stateVersion = 6;
 }
