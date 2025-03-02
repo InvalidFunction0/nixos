@@ -9,16 +9,11 @@
     zoxide
     lf cmatrix imagemagick htop btop cava
     discord
-    nautilus
     rofi
     gradle gcc git gh
-    ghostty
-    bibata-cursors
     wget
     zsh oh-my-zsh zsh-completions zsh-powerlevel10k zsh-syntax-highlighting zsh-history-substring-search
     libnotify
-    krita
-    bitwarden
     neofetch
   ] ++
   (
@@ -30,6 +25,9 @@
             mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
           })
         ) wlogout wl-clipboard
+
+        # no build on macOS
+        nautilus bitwarden krita bibata-cursors ghostty ghostty
       ]
     else [ ]
   );

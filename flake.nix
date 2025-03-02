@@ -80,7 +80,7 @@
             # hack around nix-home-manager causing infinite recursion
             isLinux = false;
           };
-          # home-manager.users."ayaan" = import ./hosts/default/home.nix;
+          home-manager.users."ayaanwaqas" = import ./hosts/default/home.nix;
         }
       ];
     };
