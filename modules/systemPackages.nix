@@ -27,7 +27,7 @@
         ) wlogout wl-clipboard
 
         # no build on macOS
-        nautilus bitwarden krita bibata-cursors ghostty ghostty
+        nautilus bitwarden krita bibata-cursors ghostty ghostty notion
       ]
     else [ ]
   );
