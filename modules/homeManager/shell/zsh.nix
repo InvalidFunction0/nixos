@@ -32,7 +32,6 @@ with lib;
         ls = "ls --color";
         cl = "clear";
         vim = "nvim";
-        
       };
       
       oh-my-zsh = {
