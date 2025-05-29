@@ -151,6 +151,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     rustup
+    felix-fm # for testing
     vim neovim
     vscode
     # zed-editor
