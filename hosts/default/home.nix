@@ -11,6 +11,5 @@
 
     winetricks
     wineWowPackages.stable
-    wine
   ];
 }
