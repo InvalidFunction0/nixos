@@ -33,7 +33,7 @@
 
   # Virt Manager
   virtualisation.libvirtd.enable = true;
-  programs.virt-manager.enable = ture;
+  programs.virt-manager.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
 
   hyprland.enable = true;
