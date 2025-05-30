@@ -28,7 +28,7 @@
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
     nix-citizen.url = "github:LovingMelody/nix-citizen";
-    nix-gaming.url = "github:fufexan/nix-gaming"
+    nix-gaming.url = "github:fufexan/nix-gaming";
     nix-citizen.inputs.nix-gaming.follows = "nix-gaming";
   };
 
