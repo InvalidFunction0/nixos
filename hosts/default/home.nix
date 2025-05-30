@@ -2,10 +2,6 @@
 {
   imports = [
     ../../modules/homeManager/all.nix
+    ../../modules/homeManager/linux.nix
   ];
-  # (
-  #   if pkgs.system == "aarch64-darwin"
-  #   then [ ]
-  #   else [ ../../modules/homeManager/linux.nix ]
-  # );
 }
