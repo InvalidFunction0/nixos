@@ -7,7 +7,7 @@
     vscode
     # zed-editor
     zoxide
-    lf cmatrix imagemagick htop btop cava
+    lf cmatrix imagemagick htop btop cava nvtop
     discord
     rofi
     gradle gcc git gh
