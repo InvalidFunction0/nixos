@@ -31,6 +31,11 @@
     trusted-public-keys = ["nix-citizen.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="];
   };
 
+  # Virt Manager
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = ture;
+  virtualisation.spiceUSBRedirection.enable = true;
+
   hyprland.enable = true;
 
   # Configure network proxy if necessary
