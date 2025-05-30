@@ -9,7 +9,6 @@
     unzip
     cabextract
 
-    wine
-    wine-mono
+    winetricks
   ];
 }
