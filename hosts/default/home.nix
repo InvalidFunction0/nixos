@@ -10,5 +10,6 @@
     cabextract
 
     wine
+    wine-mono
   ];
 }
