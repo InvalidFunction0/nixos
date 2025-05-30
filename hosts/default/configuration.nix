@@ -129,6 +129,7 @@
   home-manager = {
     # also pass inputs to home-manager modules
     extraSpecialArgs = { inherit inputs; };
+    backupFileExtension = "backup";
     users = {
       "ayaan" = import ./home.nix;
     };
@@ -177,6 +178,7 @@
     catppuccin-cursors.macchiatoSapphire
     krita
     bitwarden
+    inputs.zen-browser.packages."${system}".default
   ];
   
   fonts = {
