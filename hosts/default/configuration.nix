@@ -134,7 +134,7 @@
   users.users.ayaan = {
     isNormalUser = true;
     description = "Ayaan Waqas";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
     packages = with pkgs; [
     #  thunderbird
     ];
