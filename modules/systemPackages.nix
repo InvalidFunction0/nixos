@@ -15,6 +15,7 @@
     zsh oh-my-zsh zsh-completions zsh-powerlevel10k zsh-syntax-highlighting zsh-history-substring-search
     libnotify
     neofetch
+    unzip
   ] ++
   (
     if pkgs.system == "x86_64-linux" then
@@ -31,6 +32,7 @@
 
 	# gaming
 	inputs.nix-citizen.packages.${system}.star-citizen
+	winetricks
       ]
     else [ ]
   );
