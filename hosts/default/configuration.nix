@@ -31,10 +31,25 @@
     trusted-public-keys = ["nix-citizen.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="];
   };
 
+  #
   # Virt Manager
-  virtualisation.libvirtd.enable = true;
+  #
+
+  programs.dconf.enable = true;
+
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu = {
+      swtpm.enable = true;
+      ovmf.enable = true;
+      ovmf.packages = with pkgs; [ OVMFFull.fd ];
+    };
+  };
+
   programs.virt-manager.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
+
+
 
   hyprland.enable = true;
 

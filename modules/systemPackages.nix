@@ -16,6 +16,8 @@
     libnotify
     neofetch
     unzip
+
+    pciutils
   ] ++
   (
     if pkgs.system == "x86_64-linux" then
@@ -28,11 +30,18 @@
         ) wlogout wl-clipboard
 
         # no build on macOS
-        nautilus bitwarden krita bibata-cursors ghostty ghostty notion
+        nautilus bitwarden krita bibata-cursors ghostty notion
 
 	# gaming
 	inputs.nix-citizen.packages.${system}.star-citizen
 	winetricks
+
+	virt-manager
+	virt-viewer
+	spice spice-gtk
+	spice-protocol
+	win-virtio win-spice
+	gnome.adwaita-icon-theme
       ]
     else [ ]
   );
