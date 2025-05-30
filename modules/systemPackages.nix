@@ -29,8 +29,8 @@
         # no build on macOS
         nautilus bitwarden krita bibata-cursors ghostty ghostty notion
 
-	# gaming yay
-	inputs.nix-gaming.packages."${system}".star-citizen
+	# gaming
+	inputs.nix-citizen.packages.${system}.star-citizen
       ]
     else [ ]
   );
