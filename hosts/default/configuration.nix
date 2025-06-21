@@ -209,6 +209,8 @@
     krita
     bitwarden
     inputs.zen-browser.packages."${system}".default
+
+    bun
   ];
   
   fonts = {

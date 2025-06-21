@@ -17,6 +17,8 @@
     neofetch
     unzip
 
+    bun
+
     pciutils
   ] ++
   (
