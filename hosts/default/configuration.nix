@@ -49,7 +49,7 @@
   programs.virt-manager.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
 
-
+  services.hardware.openrgb.enable = true;
 
   hyprland.enable = true;
 
@@ -189,7 +189,7 @@
     zoxide
     lf cmatrix imagemagick htop btop cava
     discord
-    swww hyprpaper hyprlock hyprshot
+    swww hyprpaper hyprlock hyprshot hyprshade
     nautilus
     rofi
     ( waybar.overrideAttrs
@@ -209,6 +209,7 @@
     krita
     bitwarden
     inputs.zen-browser.packages."${system}".default
+    openrgb-with-all-plugins
 
     bun
   ];

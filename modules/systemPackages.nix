@@ -16,8 +16,6 @@
     libnotify
     neofetch
     unzip
-    openrgb-with-all-plugins
-    hyprshade
 
     bun
 
@@ -26,7 +24,8 @@
   (
     if pkgs.system == "x86_64-linux" then
       [
-        swww hyprpaper hyprlock hyprshot pavucontrol albert catppuccin-cursors.macchiatoSapphire
+        swww hyprpaper hyprlock hyprshot hyprshade pavucontrol albert catppuccin-cursors.macchiatoSapphire
+	openrgb-with-all-plugins
         ( waybar.overrideAttrs
           (oldAttrs: {
             mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
