@@ -189,7 +189,7 @@
     zoxide
     lf cmatrix imagemagick htop btop cava
     discord
-    swww hyprpaper hyprlock hyprshot hyprshade
+    swww hyprpaper hyprlock hyprshot hyprsunset
     nautilus
     rofi
     ( waybar.overrideAttrs
