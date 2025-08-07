@@ -16,6 +16,8 @@
     libnotify
     neofetch
     unzip
+    openrgb-with-all-plugins
+    hyprshade
 
     bun
 
