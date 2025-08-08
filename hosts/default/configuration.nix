@@ -15,9 +15,9 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.kernelModules = [ "kvm-amd" "vfio-pci" ];
-  boot.kernelParams = [ "amd_iommu=on" "iommu=pt" ];
+  boot.kernelParams = [ "amd_iommu=on" "iommu=pt" "pcie_acs_override=downstream,multifunction" ];
 
   boot.kernel.sysctl = {
     "vm.max_map_count" = 32000000;
