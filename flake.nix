@@ -81,7 +81,7 @@
           ];
         }
         ./modules/darwin.nix
-        ./modules/systemPackages.nix
+        ./modules/pkgsDarwin.nix
         home-manager.darwinModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
@@ -91,17 +91,17 @@
             # hack around nix-home-manager causing infinite recursion
             isLinux = false;
           };
-          home-manager.users."ayaanwaqas" = import ./hosts/default/home.nix;
+          home-manager.users."ayaanwaqas" = import ./hosts/linux/home.nix;
         }
       ];
     };
 
     nixosConfigurations = {
 
-      default = nixpkgs.lib.nixosSystem {
+      linux = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         modules = [
-          ./hosts/default/configuration.nix
+          ./hosts/linux/configuration.nix
           inputs.home-manager.nixosModules.default
         ];
       };
@@ -109,8 +109,8 @@
       workMachine = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         modules = [
-	        ./hosts/workMachine/configuration.nix
-	      ];
+	  ./hosts/workMachine/configuration.nix
+	];
       };
 
     };
