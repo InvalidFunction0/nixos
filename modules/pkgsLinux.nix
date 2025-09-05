@@ -22,5 +22,7 @@
     spice-protocol
     win-virtio win-spice
     adwaita-icon-theme
+
+    quickshell
   ];
 }
