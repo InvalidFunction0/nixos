@@ -100,6 +100,7 @@
 
       linux = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
+	system = "x86_64-linux";
         modules = [
           ./hosts/linux/configuration.nix
           inputs.home-manager.nixosModules.default
@@ -108,6 +109,7 @@
 
       workMachine = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
+	system = "arm64-darwin";
         modules = [
 	  ./hosts/workMachine/configuration.nix
 	];

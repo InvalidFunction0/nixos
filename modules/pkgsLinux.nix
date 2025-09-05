@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   environment.systemPackages = with pkgs; [
     swww hyprpaper hyprlock hyprshot hyprshade pavucontrol albert catppuccin-cursors.macchiatoSapphire
@@ -21,6 +21,6 @@
     spice spice-gtk
     spice-protocol
     win-virtio win-spice
-    gnome.adwaita-icon-theme
+    adwaita-icon-theme
   ];
 }
