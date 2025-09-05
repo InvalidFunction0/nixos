@@ -1,7 +1,7 @@
 { pkgs, inputs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    swww hyprpaper hyprlock hyprshot hyprshade pavucontrol albert
+    swww hyprpaper hyprlock hyprshot hyprsunset pavucontrol albert
     openrgb-with-all-plugins
     ( waybar.overrideAttrs
       (oldAttrs: {
