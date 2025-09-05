@@ -3,8 +3,8 @@
   home.pointerCursor = {
     gtk.enable = true;
     x11.enable = true;
-    name = "catppuccin-macchiato-sapphire-cursors";
-    package = pkgs.catppuccin-cursors.macchiatoSapphire;
+    name = "Afterglow-Recolored-Dracula-Purple";
+    package = pkgs.afterglow-cursors-recolored;
     size = 32;
     hyprcursor = {
       enable = true;

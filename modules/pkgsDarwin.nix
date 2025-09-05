@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, inputs, ... }: {
   environment.systemPackages = with pkgs; [
     rustup
     vim neovim
@@ -18,5 +18,7 @@
     bun
 
     pciutils
+
+    inputs.zen-browser.packages."${system}".twilight
   ];
 }
