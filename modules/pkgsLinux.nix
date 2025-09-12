@@ -2,6 +2,7 @@
 {
   environment.systemPackages = with pkgs; [
     swww hyprpaper hyprlock hyprshot hyprsunset pavucontrol albert
+    rofi
     openrgb-with-all-plugins
     ( waybar.overrideAttrs
       (oldAttrs: {
