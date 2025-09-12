@@ -32,6 +32,10 @@
         # disable press-and-hold for keys in favor of key repeat
         ApplePressAndHoldEnabled = false;
 
+        AppleShowAllFiles = true;
+        AppleShowAllExtensions = true;
+        AppleInterfaceStyle = "dark";
+
         # fast key repeat rate when hold
         KeyRepeat = 2;
         InitialKeyRepeat = 15;
@@ -58,6 +62,10 @@
         FXPreferredViewStyle = "Nlsv";
         # full path in window title
         _FXShowPosixPathInTitle = true;
+      };
+
+      controlcenter = {
+        BatteryShowPercentage = true;
       };
     };
 
