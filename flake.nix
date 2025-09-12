@@ -78,6 +78,8 @@
 
           system.stateVersion = 6;
           system.primaryUser = "ayaanwaqas";
+
+          nix.enable = false;
         }
         {
           nixpkgs.overlays = [
