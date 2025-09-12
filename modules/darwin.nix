@@ -34,7 +34,7 @@
 
         AppleShowAllFiles = true;
         AppleShowAllExtensions = true;
-        AppleInterfaceStyle = "dark";
+        AppleInterfaceStyle = "Dark";
 
         # fast key repeat rate when hold
         KeyRepeat = 2;
