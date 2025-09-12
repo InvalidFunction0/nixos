@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    darwin = {
+    nix-darwin = {
       url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -38,12 +38,20 @@
   outputs = {
     self,
     nixpkgs,
-    darwin,
+    nix-darwin,
     home-manager,
     ...
   }@inputs: {
-    darwinConfigurations.default = darwin.lib.darwinSystem {
+    darwinConfigurations."Ayaans-MacBook-Air" = nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin"; # apple silicon
+      nixpkgs.hostPlatform = "aarch64-darwin";
+      users.users.ayaanwaqas = {
+          name = "$USER";
+          home = "/Users/$USER";
+      };
+
+        # Create /etc/zshrc that loads the nix-darwin environment.
+        programs.zsh.enable = true;
       specialArgs = { inherit inputs; };
       modules = [
         {
@@ -112,7 +120,7 @@
 
       workMachine = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
-	system = "arm64-darwin";
+	system = "aarch64-darwin";
         modules = [
 	  ./hosts/workMachine/configuration.nix
 	];
