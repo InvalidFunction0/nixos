@@ -24,5 +24,7 @@
     adwaita-icon-theme
 
     quickshell
+
+    inputs.zen-browser.packages."${system}".twilight
   ];
 }

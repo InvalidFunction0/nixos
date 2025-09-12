@@ -18,7 +18,5 @@
     bun
 
     pciutils
-
-    inputs.zen-browser.packages."${system}".twilight
   ];
 }

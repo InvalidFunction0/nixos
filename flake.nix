@@ -1,6 +1,19 @@
 {
   description = "Nixos config flake";
 
+  nixConfig = {
+    trusted-substituters = [
+      "https://xixiaofinland.cachix.org"
+      "https://cachix.cachix.org"
+      "https://nixpkgs.cachix.org"
+    ];
+    trusted-public-keys = [
+      "xixiaofinland.cachix.org-1:GORHf4APYS9F3nxMQRMGGSah0+JC5btI5I3CKYfKayc="
+      "cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM="
+      "nixpkgs.cachix.org-1:q91R6hxbwFvDqTSDKwDAV4T5PxqXGxswD8vhONFMeOE="
+    ];
+  };
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
@@ -19,7 +32,7 @@
     };
 
     hyprland.url = "github:hyprwm/Hyprland";
-    
+
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -43,16 +56,14 @@
     ...
   }@inputs: {
     darwinConfigurations."Ayaans-MacBook-Air" = nix-darwin.lib.darwinSystem {
-      system = "aarch64-darwin"; # apple silicon
-      nixpkgs.hostPlatform = "aarch64-darwin";
-      users.users.ayaanwaqas = {
-          name = "$USER";
-          home = "/Users/$USER";
-      };
+      # users.users.ayaanwaqas = {
+      #     name = "$USER";
+      #     home = "/Users/$USER";
+      # };
 
-        # Create /etc/zshrc that loads the nix-darwin environment.
-        programs.zsh.enable = true;
-      specialArgs = { inherit inputs; };
+      #   # Create /etc/zshrc that loads the nix-darwin environment.
+      #   programs.zsh.enable = true;
+      # specialArgs = { inherit inputs; };
       modules = [
         {
           nixpkgs.config = {
@@ -61,6 +72,11 @@
             allowUnsupportedSystem = true;
             allowBroken = true;
           };
+
+          nixpkgs.hostPlatform = "aarch64-darwin";
+
+          system.stateVersion = 6;
+          system.primaryUser = "ayaanwaqas";
         }
         {
           nixpkgs.overlays = [
@@ -94,16 +110,16 @@
         ./modules/darwin.nix
         ./modules/pkgsDarwin.nix
         home-manager.darwinModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.extraSpecialArgs = {
-            inherit inputs;
-            # hack around nix-home-manager causing infinite recursion
-            isLinux = false;
-          };
-          home-manager.users."ayaanwaqas" = import ./hosts/linux/home.nix;
-        }
+        # {
+        #   home-manager.useGlobalPkgs = true;
+        #   home-manager.useUserPackages = true;
+        #   home-manager.extraSpecialArgs = {
+        #     inherit inputs;
+        #     # hack around nix-home-manager causing infinite recursion
+        #     isLinux = false;
+        #   };
+        #   home-manager.users."ayaanwaqas" = import ./hosts/linux/home.nix;
+        # }
       ];
     };
 
@@ -111,7 +127,7 @@
 
       linux = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
-	system = "x86_64-linux";
+	      system = "x86_64-linux";
         modules = [
           ./hosts/linux/configuration.nix
           inputs.home-manager.nixosModules.default
@@ -120,12 +136,11 @@
 
       workMachine = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
-	system = "aarch64-darwin";
+	      system = "aarch64-darwin";
         modules = [
-	  ./hosts/workMachine/configuration.nix
-	];
+	        ./hosts/workMachine/configuration.nix
+	      ];
       };
-
     };
   };
 }
