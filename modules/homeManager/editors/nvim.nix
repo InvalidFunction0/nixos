@@ -67,6 +67,18 @@
       treesitter.enable = true;
       web-devicons.enable = true;
       colorizer.enable = true;
+      colorful-menu.enable = true;
+
+      cmp = {
+        enable = true;
+
+        autoEnableSources = true;
+        settings.sources = [
+          { name = "cmdline"; }
+          { name = "nvim_lsp"; }
+          { name = "treesitter"; }
+        ];
+      };
       
       comment = {
         enable = true;
