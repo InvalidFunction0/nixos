@@ -16,5 +16,7 @@
     bun
 
     pciutils
+
+    ripgrep
   ];
 }

@@ -21,6 +21,19 @@
     enable = true;
     defaultEditor = true;
 
+    highlight = {
+      MacchiatoRed.fg = "#ed8796";
+      MacchiatoMaroon.fg = "#ee99a0";
+      MacchiatoPeach.fg = "#f5a87f";
+      MacchiatoYellow.fg = "#eed49f";
+      MacchiatoGreen.fg = "#a6da95";
+      MacchiatoTeal.fg = "#8bd5ca";
+      MacchiatoSky.fg = "#91d7e3";
+      MacchiatoSapphire.fg = "#7dc4e4";
+      MacchiatoBlue.fg = "#8aadf4";
+      MacchiatoLavender.fg = "#b7bdf8";
+    };
+
     globals.mapleader = " ";
 
     opts = {
@@ -52,10 +65,52 @@
     plugins = {
       lualine.enable = true;
       treesitter.enable = true;
+      web-devicons.enable = true;
+      colorizer.enable = true;
+      
+      comment = {
+        enable = true;
+
+        settings.toggler = {
+          block = "<leader>b/";
+          line = "<leader>/";
+        };
+      };
+
+      oil = {
+        enable = true;
+        settings.default_file_explorer = true;
+      };
+
+      telescope = {
+        enable = true;
+
+        extensions = {
+          fzf-native.enable = true;
+          zoxide.enable = true;
+        };
+      };
 
       indent-blankline = {
         enable = true;
         autoLoad = true;
+
+        settings = {
+          scope.enabled = true;
+          
+          indent.highlight = [
+            "MacchiatoRed"
+            # "MacchiatoMaroon"
+            "MacchiatoPeach"
+            "MacchiatoYellow"
+            "MacchiatoGreen"
+            "MacchiatoTeal"
+            # "MacchiatoSky"
+            "MacchiatoSapphire"
+            "MacchiatoBlue"
+            "MacchiatoLavender"
+          ];
+        };
       };
 
       lsp = {
@@ -83,5 +138,15 @@
       };
     };
 
+    keymaps = [
+      {
+        action = "<cmd>Telescope find_files<CR>";
+        key = "<leader>ff";
+      }
+      {
+        action = "<cmd>Telescope live_grep<CR>";
+        key = "<leader>g";
+      }
+    ];
   };
 }
