@@ -1,7 +1,6 @@
 { pkgs, inputs, ... }: {
   environment.systemPackages = with pkgs; [
     rustup
-    vim neovim
     vscode
     # zed-editor
     zoxide

@@ -27,5 +27,7 @@
     quickshell
 
     inputs.zen-browser.packages."${system}".twilight
+
+    teams-for-linux
   ];
 }
