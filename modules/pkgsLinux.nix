@@ -2,6 +2,7 @@
 {
   environment.systemPackages = with pkgs; [
     swww hyprpaper hyprlock hyprshot hyprsunset pavucontrol albert
+    rofi
     openrgb-with-all-plugins
     ( waybar.overrideAttrs
       (oldAttrs: {
@@ -24,5 +25,7 @@
     adwaita-icon-theme
 
     quickshell
+
+    inputs.zen-browser.packages."${system}".twilight
   ];
 }
