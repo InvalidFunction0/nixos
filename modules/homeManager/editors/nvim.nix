@@ -73,8 +73,8 @@
       bufferline = {
         enable = true;
 
-        settings = {
-          diagnostics = "\"nvim_lsp\" | \"coc\"";
+        settings.options = {
+          diagnostics.__raw = "nvim_lsp";
         };
       };
 
