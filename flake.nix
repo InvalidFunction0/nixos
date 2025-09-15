@@ -114,16 +114,16 @@
         ./modules/darwin.nix
         ./modules/pkgsDarwin.nix
         home-manager.darwinModules.home-manager
-        # {
-        #   home-manager.useGlobalPkgs = true;
-        #   home-manager.useUserPackages = true;
-        #   home-manager.extraSpecialArgs = {
-        #     inherit inputs;
-        #     # hack around nix-home-manager causing infinite recursion
-        #     isLinux = false;
-        #   };
-        #   home-manager.users."ayaanwaqas" = import ./hosts/linux/home.nix;
-        # }
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.extraSpecialArgs = {
+            inherit inputs;
+            # hack around nix-home-manager causing infinite recursion
+            isLinux = false;
+          };
+          home-manager.users."ayaanwaqas" = import ./hosts/darwin/home.nix;
+        }
       ];
     };
 

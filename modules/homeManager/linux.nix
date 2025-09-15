@@ -1,5 +1,9 @@
 { pkgs, ... }:
 {
+  imports = [
+    ../../modules/homeManager/sys/swaync.nix
+  ];
+
   home.pointerCursor = {
     gtk.enable = true;
     x11.enable = true;

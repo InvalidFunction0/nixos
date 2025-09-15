@@ -3,7 +3,6 @@
   imports = [
     ../../modules/homeManager/shell/zsh.nix
     ../../modules/homeManager/shell/zoxide.nix
-    ../../modules/homeManager/sys/swaync.nix
     ../../modules/homeManager/editors/zed.nix
     ../../modules/homeManager/editors/nvim.nix
   ];
