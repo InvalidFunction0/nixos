@@ -68,6 +68,7 @@
       web-devicons.enable = true;
       colorizer.enable = true;
       colorful-menu.enable = true;
+      bufferline.enable = true;
 
       cmp = {
         enable = true;
@@ -91,7 +92,14 @@
 
       oil = {
         enable = true;
-        settings.default_file_explorer = true;
+
+        settings = {
+          default_file_explorer = true;
+
+          keymaps = {
+            "<leader>c" = "actions.open_cwd";
+          };
+        };
       };
 
       telescope = {
@@ -152,12 +160,31 @@
 
     keymaps = [
       {
+        action = "<cmd>nohl<CR>";
+        key = "<leader>h";
+      }
+
+      {
         action = "<cmd>Telescope find_files<CR>";
         key = "<leader>ff";
       }
       {
         action = "<cmd>Telescope live_grep<CR>";
         key = "<leader>g";
+      }
+
+      {
+        action = "<cmd>Oil<CR>";
+        key = "<leader>e";
+      }
+
+      {
+        action = "<cmd>bnext<CR>";
+        key = "<M-k>";
+      }
+      {
+        action = "<cmd>bprev<CR>";
+        key = "<M-j>";
       }
     ];
   };
