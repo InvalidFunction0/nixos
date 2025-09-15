@@ -68,6 +68,7 @@
       web-devicons.enable = true;
       colorizer.enable = true;
       colorful-menu.enable = true;
+      emmet.enable = true;
 
       bufferline = {
         enable = true;
