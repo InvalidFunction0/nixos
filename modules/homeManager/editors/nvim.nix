@@ -68,7 +68,14 @@
       web-devicons.enable = true;
       colorizer.enable = true;
       colorful-menu.enable = true;
-      bufferline.enable = true;
+
+      bufferline = {
+        enable = true;
+
+        settings = {
+          diagnostics = "\"nvim_lsp\" | \"coc\"";
+        };
+      };
 
       cmp = {
         enable = true;
