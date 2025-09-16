@@ -8,7 +8,7 @@
       (oldAttrs: {
          mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
       })
-    ) wlogout wl-clipboard
+    ) wl-clipboard
 
     # no build on macOS
     nautilus bitwarden krita bibata-cursors ghostty notion

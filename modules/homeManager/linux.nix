@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
-    ../../modules/homeManager/sys/swaync.nix
+    ../../modules/homeManager/sys/swaync/swaync.nix
   ];
 
   home.pointerCursor = {

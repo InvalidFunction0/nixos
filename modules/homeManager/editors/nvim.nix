@@ -87,11 +87,13 @@
           { name = "cmdline"; }
           { name = "nvim_lsp"; }
           { name = "treesitter"; }
+          { name = "luasnip"; }
         ];
 
-        setings.mapping = {
-          "<CR>" =
-            "cmp.mapping(function(fallback)
+        settings.mapping = {
+          "<CR>" = ''
+            cmp.mapping(function(fallback)
+              local luasnip = require('luasnip')
               if cmp.visible() then
                 if luasnip.expandable() then
                   luasnip.expand()
@@ -103,10 +105,12 @@
               else
                 fallback()
               end
-            end)";
+            end)
+          '';
 
-          "<Tab>" =
-            "cmp.mapping(function(fallback)
+          "<Tab>" = ''
+            cmp.mapping(function(fallback)
+              local luasnip = require('luasnip')
               if cmp.visible() then
                 cmp.select_next_item()
               elseif luasnip.locally_jumpable(1) then
@@ -114,10 +118,12 @@
               else
                 fallback()
               end
-            end, { \"i\", \"s\" })";
+            end, { "i", "s" })
+          '';
 
-          "<S-Tab>" =
-            "cmp.mapping(function(fallback)
+          "<S-Tab>" = ''
+            cmp.mapping(function(fallback)
+              local luasnip = require('luasnip')
               if cmp.visible() then
                 cmp.select_prev_item()
               elseif luasnip.locally_jumpable(-1) then
@@ -125,7 +131,8 @@
               else
                 fallback()
               end
-            end, { \"i\", \"s\" })";
+            end, { "i", "s" })
+          '';
         };
       };
       
