@@ -1,0 +1,33 @@
+/* @import url("https://fonts.googleapis.com/css3?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap"); */
+
+* {
+  border: none;
+  box-shadow: none;
+  text-shadow: none;
+  outline: 0;
+
+  margin: 1rem;
+}
+
+window {
+  font-family: "CakaydiaCoveNerdFont";
+  font-weight: 700;
+  color: #22273f;
+
+  background: linear-gradient(
+    45deg,
+    rgba(83, 240, 189, 0.3), /* #53f0bd */
+    rgba(32, 218, 255, 0.3)  /* #20daff */
+  );
+}
+
+button {
+  opacity: 0.8;
+
+  background: #aaaaff;
+}
+
+button:hover {
+  opacity: 1;
+}
+

@@ -241,6 +241,18 @@
         action = "<cmd>bprev<CR>";
         key = "<M-j>";
       }
+
+      {
+        mode = "v";
+        # so that the selection remains
+        action = ">gv";
+        key = "<C-]>";
+      }
+      {
+        mode = "v";
+        action = "<gv";
+        key = "<C-[>";
+      }
     ];
   };
 }

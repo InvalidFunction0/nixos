@@ -2,6 +2,7 @@
 {
   imports = [
     ../../modules/homeManager/sys/swaync/swaync.nix
+    ../../modules/homeManager/sys/wlogout/wlogout.nix
   ];
 
   home.pointerCursor = {
