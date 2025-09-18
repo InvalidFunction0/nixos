@@ -19,6 +19,7 @@
 
   programs.nixvim = {
     enable = true;
+
     defaultEditor = true;
 
     highlight = {
@@ -138,7 +139,6 @@
         settings.completion = {
           autocompletion = true;
           leyword_length = 2;
-          keyword_pattern = "[[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%([\-.\/\\@]\w*\)*\)]]";
         };
       };
       
@@ -252,12 +252,12 @@
         mode = "v";
         # so that the selection remains
         action = ">gv";
-        key = "<C-]>";
+        key = ">";
       }
       {
         mode = "v";
         action = "<gv";
-        key = "<C-[>";
+        key = "<";
       }
     ];
   };
