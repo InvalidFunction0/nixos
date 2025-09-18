@@ -134,6 +134,12 @@
             end, { "i", "s" })
           '';
         };
+
+        settings.completion = {
+          autocompletion = true;
+          leyword_length = 2;
+          keyword_pattern = "[[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%([\-.\/\\@]\w*\)*\)]]";
+        };
       };
       
       comment = {
