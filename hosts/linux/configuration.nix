@@ -187,6 +187,8 @@
     enableDefaultPackages = true;
     packages = with pkgs; [
       nerd-fonts.caskaydia-cove
+      material-symbols
+      material-icons
     ];
     
     fontconfig = {
