@@ -46,6 +46,8 @@
 
       tabstop = 8; # so tabs don't masquerade as spaces
       softtabstop = 0;
+
+      conceallevel = 2;
     };
 
     diagnostic.settings = {
@@ -80,65 +82,46 @@
         };
       };
 
-      cmp = {
+      blink-cmp = {
         enable = true;
+        setupLspCapabilities = true;
+        settings = {
+          keymap.preset = "super-tab";
 
-        autoEnableSources = true;
-        settings.sources = [
-          { name = "cmdline"; }
-          { name = "nvim_lsp"; }
-          { name = "treesitter"; }
-          { name = "luasnip"; }
-        ];
+          sources.min_keyword_length = 1;
 
-        settings.mapping = {
-          "<CR>" = ''
-            cmp.mapping(function(fallback)
-              local luasnip = require('luasnip')
-              if cmp.visible() then
-                if luasnip.expandable() then
-                  luasnip.expand()
-                else
-                  cmp.confirm({
-                    select = true,
-                  })
-                end
-              else
-                fallback()
-              end
-            end)
-          '';
-
-          "<Tab>" = ''
-            cmp.mapping(function(fallback)
-              local luasnip = require('luasnip')
-              if cmp.visible() then
-                cmp.select_next_item()
-              elseif luasnip.locally_jumpable(1) then
-                luasnip.jump(1)
-              else
-                fallback()
-              end
-            end, { "i", "s" })
-          '';
-
-          "<S-Tab>" = ''
-            cmp.mapping(function(fallback)
-              local luasnip = require('luasnip')
-              if cmp.visible() then
-                cmp.select_prev_item()
-              elseif luasnip.locally_jumpable(-1) then
-                luasnip.jump(-1)
-              else
-                fallback()
-              end
-            end, { "i", "s" })
-          '';
+          sources.providers.luasnip = {
+            name = "LuaSnip";
+            module = "blink.cmp.sources.luasnip";
+            opts = {
+              snippets = { preset = "luasnip"; };
+              sources = {
+                default = [ "lsp" "path" "snippets" "buffer" ];
+              };
+            };
+          };
         };
+      };
 
-        settings.completion = {
-          autocompletion = true;
-          leyword_length = 2;
+      obsidian = {
+        enable = true;
+        settings = {
+          completion = {
+            min_chars = 2;
+            blink = true;
+          };
+          new_notes_location = "current_dir";
+          workspaces = [
+            {
+              name = "main";
+              path = "~/git/notes/Vault";
+            }
+            {
+              name = "test vault";
+              path = "~/git/notes/test vault";
+            }
+          ];
+          legacy_commands = false;
         };
       };
       
