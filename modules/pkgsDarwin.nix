@@ -18,5 +18,7 @@
     pciutils
 
     ripgrep
+
+    tmux
   ];
 }
