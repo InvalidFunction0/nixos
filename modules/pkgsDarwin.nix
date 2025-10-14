@@ -3,7 +3,6 @@
   environment.systemPackages = with pkgs; [
     rustup
     vscode
-    # zed-editor
     zoxide
     lf
     cmatrix

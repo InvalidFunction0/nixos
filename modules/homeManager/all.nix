@@ -9,7 +9,7 @@
   imports = [
     ../../modules/homeManager/shell/zsh.nix
     ../../modules/homeManager/shell/zoxide.nix
-    ../../modules/homeManager/editors/zed.nix
+    # ../../modules/homeManager/editors/zed.nix
     ../../modules/homeManager/editors/nvim.nix
   ];
 
