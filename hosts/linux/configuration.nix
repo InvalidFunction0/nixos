@@ -2,25 +2,37 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ../../modules/nixos/hyprland.nix
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ../../modules/nixos/hyprland.nix
 
-      ../../modules/pkgsLinux.nix
-      ../../modules/pkgsDarwin.nix
-      inputs.home-manager.nixosModules.default
-    ];
+    ../../modules/pkgsLinux.nix
+    ../../modules/pkgsDarwin.nix
+    inputs.home-manager.nixosModules.default
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_zen;
-  boot.kernelModules = [ "kvm-amd" "vfio-pci" ];
-  boot.kernelParams = [ "amd_iommu=on" "iommu=pt" "pcie_acs_override=downstream,multifunction" ];
+  boot.kernelModules = [
+    "kvm-amd"
+    "vfio-pci"
+  ];
+  boot.kernelParams = [
+    "amd_iommu=on"
+    "iommu=pt"
+    "pcie_acs_override=downstream,multifunction"
+  ];
 
   boot.kernel.sysctl = {
     "vm.max_map_count" = 32000000;
@@ -31,9 +43,12 @@
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
-    substituters = ["https://nix-citizen.cachix.org"];
-    trusted-public-keys = ["nix-citizen.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+    substituters = [ "https://nix-citizen.cachix.org" ];
+    trusted-public-keys = [ "nix-citizen.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=" ];
   };
 
   #
@@ -68,7 +83,7 @@
     dns = "default";
     wifi.powersave = false;
   };
-  
+
   hardware = {
     enableRedistributableFirmware = true;
     enableAllFirmware = true;
@@ -108,16 +123,16 @@
 
   services.libinput = {
     enable = true;
-    
+
     mouse = {
       accelProfile = "flat";
     };
-    
+
     touchpad = {
       accelProfile = "flat";
     };
   };
-  
+
   # Configure console keymap
   console.keyMap = "uk";
 
@@ -147,16 +162,20 @@
   programs.zsh = {
     enable = true;
   };
-  
+
   environment.pathsToLink = [ "/share/zsh" ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.ayaan = {
     isNormalUser = true;
     description = "Ayaan Waqas";
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "libvirtd"
+    ];
     packages = with pkgs; [
-    #  thunderbird
+      #  thunderbird
     ];
     shell = pkgs.zsh;
   };
@@ -190,7 +209,7 @@
       material-symbols
       material-icons
     ];
-    
+
     fontconfig = {
       defaultFonts = {
         monospace = [ "Cascadia Code" ];

@@ -1,4 +1,9 @@
-{ inputs, lib, config, ... }:
+{
+  inputs,
+  lib,
+  config,
+  ...
+}:
 
 with lib;
 
@@ -23,7 +28,11 @@ with lib;
         load_direnv = "shell_hook";
 
         vim_mode = mkIf config.zed.vim_mode.enable true;
-        autosave = { after_delay = { milliseconds = 500; }; };
+        autosave = {
+          after_delay = {
+            milliseconds = 500;
+          };
+        };
         autoscroll_on_clicks = true;
         relative_line_numbers = true;
         # show_whitespaces = "all";
@@ -34,7 +43,7 @@ with lib;
         buffer_font_features = {
           calt = true;
         };
-        
+
         ui_font_family = "Cascadia Code";
         ui_font_size = 14;
         ui_font_features = {
@@ -55,7 +64,7 @@ with lib;
             model = "claude-3.5-sonnet-latest";
           };
         };
-        
+
         terminal = {
           font_family = "Cascadia Code";
           font_features = {
@@ -64,12 +73,12 @@ with lib;
           font_size = 14;
           shell = "system";
         };
-        
+
         project_panel = {
           dock = "right";
         };
-        
-        terminal ={
+
+        terminal = {
           dock = "bottom";
         };
       };

@@ -1,4 +1,10 @@
-{ config, pkgs, lib, home, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  home,
+  ...
+}:
 {
   imports = [
     ../../modules/homeManager/shell/zsh.nix
@@ -18,7 +24,10 @@
   zed = {
     enable = true;
     vim_mode.enable = true;
-    extensions = [ "nix" "catppuccin" ];
+    extensions = [
+      "nix"
+      "catppuccin"
+    ];
   };
 
   # gtk = {
@@ -51,10 +60,10 @@
   #   else builtins.toPath "/home/ayaan"
   # ;
   home.homeDirectory =
-    if pkgs.system == "aarch64-darwin"
-    then lib.mkForce "/Users/ayaanwaqas"
-    else lib.mkForce "/home/ayaan"
-  ;
+    if pkgs.system == "aarch64-darwin" then
+      lib.mkForce "/Users/ayaanwaqas"
+    else
+      lib.mkForce "/home/ayaan";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release

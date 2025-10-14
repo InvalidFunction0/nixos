@@ -50,101 +50,100 @@
     nix-citizen.inputs.nix-gaming.follows = "nix-gaming";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    nix-darwin,
-    home-manager,
-    ...
-  }@inputs: {
-    darwinConfigurations."Ayaans-MacBook-Air" = nix-darwin.lib.darwinSystem {
-      # users.users.ayaanwaqas = {
-      #     name = "$USER";
-      #     home = "/Users/$USER";
-      # };
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nix-darwin,
+      home-manager,
+      ...
+    }@inputs:
+    {
+      darwinConfigurations."Ayaans-MacBook-Air" = nix-darwin.lib.darwinSystem {
+        # users.users.ayaanwaqas = {
+        #     name = "$USER";
+        #     home = "/Users/$USER";
+        # };
 
-      #   # Create /etc/zshrc that loads the nix-darwin environment.
-      #   programs.zsh.enable = true;
-      # specialArgs = { inherit inputs; };
-      modules = [
-        {
-          nixpkgs.config = {
-            allowUnfree = true;
-            allowUnfreePredicate = pkg: true;
-            allowUnsupportedSystem = true;
-            allowBroken = true;
-          };
+        #   # Create /etc/zshrc that loads the nix-darwin environment.
+        #   programs.zsh.enable = true;
+        # specialArgs = { inherit inputs; };
+        modules = [
+          {
+            nixpkgs.config = {
+              allowUnfree = true;
+              allowUnfreePredicate = pkg: true;
+              allowUnsupportedSystem = true;
+              allowBroken = true;
+            };
 
-          nixpkgs.hostPlatform = "aarch64-darwin";
+            nixpkgs.hostPlatform = "aarch64-darwin";
 
-          system.stateVersion = 6;
-          system.primaryUser = "ayaanwaqas";
+            system.stateVersion = 6;
+            system.primaryUser = "ayaanwaqas";
 
-          nix.enable = false;
-        }
-        {
-          nixpkgs.overlays = [
-            # pkgs.firefox-bin
-            inputs.nixpkgs-firefox-darwin.overlay
+            nix.enable = false;
+          }
+          {
+            nixpkgs.overlays = [
+              # pkgs.firefox-bin
+              inputs.nixpkgs-firefox-darwin.overlay
 
-            # use selected unstable packages with pkgs.unstable.xyz
-            # https://discourse.nixos.org/t/how-to-use-nixos-unstable-for-some-packages-only/36337
-            # "https://github.com/ne9z/dotfiles-flake/blob/d3159df136294675ccea340623c7c363b3584e0d/configuration.nix"
-            (final: prev: {
-              unstable =
-                import inputs.nixpkgs-unstable {
+              # use selected unstable packages with pkgs.unstable.xyz
+              # https://discourse.nixos.org/t/how-to-use-nixos-unstable-for-some-packages-only/36337
+              # "https://github.com/ne9z/dotfiles-flake/blob/d3159df136294675ccea340623c7c363b3584e0d/configuration.nix"
+              (final: prev: {
+                unstable = import inputs.nixpkgs-unstable {
                   system = prev.system;
                 };
-            })
+              })
 
-            (final: prev: {
-              # pkgs.unstable-locked.<something>
-              unstable-locked =
-                import inputs.nixpkgs-locked { system = prev.system; };
-            })
+              (final: prev: {
+                # pkgs.unstable-locked.<something>
+                unstable-locked = import inputs.nixpkgs-locked { system = prev.system; };
+              })
 
-            (final: prev: {
-              # https://github.com/nix-community/home-manager/issues/1341#issuecomment-1468889352
-              mkAlias =
-                inputs.mkAlias.outputs.apps.${prev.system}.default.program;
-            })
+              (final: prev: {
+                # https://github.com/nix-community/home-manager/issues/1341#issuecomment-1468889352
+                mkAlias = inputs.mkAlias.outputs.apps.${prev.system}.default.program;
+              })
 
-          ];
-        }
-        ./modules/darwin.nix
-        ./modules/pkgsDarwin.nix
-        home-manager.darwinModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.extraSpecialArgs = {
-            inherit inputs;
-            # hack around nix-home-manager causing infinite recursion
-            isLinux = false;
-          };
-          home-manager.users."ayaanwaqas" = import ./hosts/darwin/home.nix;
-        }
-      ];
-    };
-
-    nixosConfigurations = {
-
-      linux = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
-	      system = "x86_64-linux";
-        modules = [
-          ./hosts/linux/configuration.nix
-          inputs.home-manager.nixosModules.default
+            ];
+          }
+          ./modules/darwin.nix
+          ./modules/pkgsDarwin.nix
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+              # hack around nix-home-manager causing infinite recursion
+              isLinux = false;
+            };
+            home-manager.users."ayaanwaqas" = import ./hosts/darwin/home.nix;
+          }
         ];
       };
 
-      workMachine = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
-	      system = "aarch64-darwin";
-        modules = [
-	        ./hosts/workMachine/configuration.nix
-	      ];
+      nixosConfigurations = {
+
+        linux = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          system = "x86_64-linux";
+          modules = [
+            ./hosts/linux/configuration.nix
+            inputs.home-manager.nixosModules.default
+          ];
+        };
+
+        workMachine = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          system = "aarch64-darwin";
+          modules = [
+            ./hosts/workMachine/configuration.nix
+          ];
+        };
       };
     };
-  };
 }

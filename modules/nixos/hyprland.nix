@@ -1,4 +1,10 @@
-{ inputs, lib, pkgs, config, ... }:
+{
+  inputs,
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 
 {
   options = {
@@ -9,7 +15,7 @@
     programs.hyprland = {
       enable = true;
       xwayland.enable = true;
-      
+
       package = inputs.hyprland.packages."${pkgs.system}".hyprland;
     };
   };

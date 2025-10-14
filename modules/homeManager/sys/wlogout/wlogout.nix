@@ -4,7 +4,7 @@
     enable = true;
 
     style = ./style.css;
-    
+
     layout = [
       {
         label = "shutdown";
@@ -29,4 +29,3 @@
     ];
   };
 }
-
