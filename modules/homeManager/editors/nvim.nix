@@ -1,4 +1,9 @@
-{ inputs, pkgs, ... }:
+{
+  inputs,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   imports = [
@@ -61,7 +66,7 @@
       settings = {
         flavour = "macchiato";
 
-	transparent_background = true;
+        transparent_background = true;
       };
     };
 
@@ -73,6 +78,54 @@
       colorizer.enable = true;
       colorful-menu.enable = true;
       emmet.enable = true;
+      nvim-autopairs.enable = true;
+
+      conform-nvim = {
+        enable = true;
+        settings = {
+          formatters_by_ft = {
+            lua = [ "stylua" ];
+            # python = [ "isort" "black" ];
+            nix = [ "nixfmt" ];
+            rust = [ "rustfmt" ];
+
+            "*" = [ "codespell" ];
+            "_" = [ "prettierd" ];
+          };
+          default_format_opts = {
+            stop_after_first = true;
+            lsp_format = "fallback";
+          };
+
+          format_on_save = {
+            timeout_ms = 250;
+            lsp_format = "fallback";
+          };
+          format_after_save = {
+            lsp_format = "fallback";
+          };
+
+          log_level = "warn";
+          notify_on_error = false;
+          notify_no_formatters = false;
+
+          formatters = {
+            prettierd = {
+              command = lib.getExe pkgs.prettierd;
+              prepend_args = [
+                "--print-width"
+                "80"
+                "--config-precedence"
+                "prefer-file"
+              ];
+            };
+            stylua.command = lib.getExe pkgs.stylua;
+            nixfmt.command = lib.getExe pkgs.nixfmt-rfc-style;
+            rustfmt.command = lib.getExe pkgs.rustfmt;
+            codespell.command = lib.getExe pkgs.codespell;
+          };
+        };
+      };
 
       bufferline = {
         enable = true;
@@ -94,9 +147,16 @@
             name = "LuaSnip";
             module = "blink.cmp.sources.luasnip";
             opts = {
-              snippets = { preset = "luasnip"; };
+              snippets = {
+                preset = "luasnip";
+              };
               sources = {
-                default = [ "lsp" "path" "snippets" "buffer" ];
+                default = [
+                  "lsp"
+                  "path"
+                  "snippets"
+                  "buffer"
+                ];
               };
             };
           };
@@ -124,12 +184,12 @@
           legacy_commands = false;
         };
       };
-      
+
       comment = {
         enable = true;
 
         settings.toggler = {
-          block = "<leader>b/";
+          block = "<leader>/";
           line = "<leader>/";
         };
       };
@@ -161,7 +221,7 @@
 
         settings = {
           scope.enabled = true;
-          
+
           indent.highlight = [
             "MacchiatoRed"
             # "MacchiatoMaroon"
@@ -181,7 +241,7 @@
         enable = true;
 
         inlayHints = true;
-        
+
         servers = {
           # js/ts
           ts_ls.enable = true;
@@ -189,16 +249,24 @@
           # lua
           lua_ls.enable = true;
 
-          # rust
-	  rust_analyzer = {
-	    enable = true;
-	    installCargo = true;
-	    installRustc = true;
+          # emmet
+          emmet_language_server = {
+            enable = true;
+            settings.init_options = {
+              showSuggestionsAsSnippets = true;
+            };
           };
 
-	  # nix
-	  nixd.enable = true;
-	};
+          # rust
+          rust_analyzer = {
+            enable = true;
+            installCargo = true;
+            installRustc = true;
+          };
+
+          # nix
+          nixd.enable = true;
+        };
       };
     };
 
