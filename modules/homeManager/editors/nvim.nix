@@ -90,7 +90,7 @@
             rust = [ "rustfmt" ];
 
             "*" = [ "codespell" ];
-            "_" = [ "prettierd" ];
+            "_" = [ "prettier" ];
           };
           default_format_opts = {
             stop_after_first = true;
@@ -110,8 +110,8 @@
           notify_no_formatters = false;
 
           formatters = {
-            prettierd = {
-              command = lib.getExe pkgs.prettierd;
+            prettier = {
+              command = lib.getExe pkgs.prettier;
               prepend_args = [
                 "--print-width"
                 "80"

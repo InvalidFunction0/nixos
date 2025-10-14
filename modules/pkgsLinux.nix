@@ -42,6 +42,7 @@
     teams-for-linux
     exfatprogs
 
+    prettier
     prettierd
     stylua
     nixfmt-rfc-style
