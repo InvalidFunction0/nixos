@@ -21,14 +21,14 @@
   programs.zoxide.enable = true;
   programs.fzf.enable = true;
 
-  zed = {
-    enable = true;
-    vim_mode.enable = true;
-    extensions = [
-      "nix"
-      "catppuccin"
-    ];
-  };
+  # zed = {
+  #   enable = true;
+  #   vim_mode.enable = true;
+    # extensions = [
+      # "nix"
+      # "catppuccin"
+    # ];
+  # };
 
   # gtk = {
   #   cursorTheme = {
