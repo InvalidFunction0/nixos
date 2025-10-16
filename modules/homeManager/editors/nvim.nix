@@ -189,7 +189,7 @@
         enable = true;
 
         settings.toggler = {
-          block = "<leader>/";
+          block = "<leader>f/";
           line = "<leader>/";
         };
       };

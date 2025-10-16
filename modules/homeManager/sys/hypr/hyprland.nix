@@ -96,8 +96,8 @@
       ];
 
       layerrule = [
-        "blur, swaync-control-center"
-        "blur, swaync-notification-window"
+        # "blur, swaync-control-center"
+        # "blur, swaync-notification-window"
         "blur, logout_dialog"
         "blur, class:swaync"
       ];
