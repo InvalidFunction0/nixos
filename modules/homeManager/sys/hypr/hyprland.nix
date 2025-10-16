@@ -12,6 +12,7 @@
         "$mod, E, exec, nautilus"
         "$mod, R, exec, ~/.config/rofi/launchers/type-1/launcher.sh"
         "ALT, SPACE, exec, albert toggle"
+        "$mod, ESCAPE, exec, wlogout"
 
         "$mod, Q, killactive"
         "$mod, F, fullscreen"
