@@ -101,6 +101,37 @@
         "blur, logout_dialog"
         "blur, class:swaync"
       ];
+
+      exec-once = [
+        "swaync"
+        "hypridle"
+        "albert"
+        "discord"
+        "steam"
+        "zen"
+        "hyprsunset"
+        "quickshell"
+      ];
+
+      workspace = [
+        "1, monitor:DP-3"
+        "2, monitor:HDMI-A-1"
+        "3, monitor:HDMI-A-1"
+        "4, monitor:HDMI-A-1"
+        "5, monitor:HDMI-A-1"
+      ];
+
+      bezier = [
+        "easeOQuart, 0.25, 1, 0.5, 1"
+        "easeIOQuad, 0.45, 0, 0.55, 1"
+      ];
+
+      animation = [
+        "windows, 1, 8, easeOQuart, popin 80%"
+        "fadeIn, 1, 8, easeOQuart"
+        "windowsOut, 1, 3, easeOQuart, popin 80%"
+        "fadeOut, 1, 3, easeOQuart"
+      ];
     };
   };
 }
