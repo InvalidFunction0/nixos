@@ -18,6 +18,7 @@
         "$mod, F, fullscreen"
         "$mod, SPACE, togglefloating"
         "$mod, G, togglegroup"
+        "$mod, T, layoutmsg, togglesplit"
 
         "$mod, PRINT, exec, hyprshot -m region -o ~/screenshots"
 
@@ -132,6 +133,11 @@
         "windowsOut, 1, 3, easeOQuart, popin 80%"
         "fadeOut, 1, 3, easeOQuart"
       ];
+
+      dwindle = {
+        preserve_split = true;
+        pseudotile = true;
+      };
     };
   };
 }
