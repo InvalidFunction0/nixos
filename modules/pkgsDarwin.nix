@@ -22,6 +22,7 @@
     zsh-powerlevel10k
     zsh-syntax-highlighting
     zsh-history-substring-search
+    fzf
     libnotify
     neofetch
     unzip
