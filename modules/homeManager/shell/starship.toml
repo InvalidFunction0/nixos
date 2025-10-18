@@ -32,6 +32,8 @@ $cmd_duration\
 
 palette = 'catppuccin_macchiato'
 
+add_newline = false
+
 [os]
 disabled = false
 format = "[$symbol ]($style)" # so that the icons are large, they need a space

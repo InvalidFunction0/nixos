@@ -8,6 +8,7 @@
     ../../modules/homeManager/shell/zsh.nix
     ../../modules/homeManager/shell/zoxide.nix
     ../../modules/homeManager/shell/starship.nix
+    ../../modules/homeManager/shell/eza.nix
     # ../../modules/homeManager/editors/zed.nix
     ../../modules/homeManager/editors/nvim.nix
   ];

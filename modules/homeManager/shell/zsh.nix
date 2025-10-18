@@ -34,8 +34,8 @@ with lib;
         '';
 
       shellAliases = {
-        ll = "ls -alF";
-        ls = "ls --color";
+        ll = "eza -alF";
+        ls = "eza --color";
         cl = "clear";
         vim = "nvim";
       };
