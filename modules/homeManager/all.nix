@@ -1,14 +1,13 @@
 {
-  config,
   pkgs,
   lib,
-  home,
   ...
 }:
 {
   imports = [
     ../../modules/homeManager/shell/zsh.nix
     ../../modules/homeManager/shell/zoxide.nix
+    ../../modules/homeManager/shell/starship.nix
     # ../../modules/homeManager/editors/zed.nix
     ../../modules/homeManager/editors/nvim.nix
   ];
@@ -24,10 +23,10 @@
   # zed = {
   #   enable = true;
   #   vim_mode.enable = true;
-    # extensions = [
-      # "nix"
-      # "catppuccin"
-    # ];
+  # extensions = [
+  # "nix"
+  # "catppuccin"
+  # ];
   # };
 
   # gtk = {
