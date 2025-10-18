@@ -9,7 +9,7 @@
     imagemagick
     htop
     btop
-    # cava
+    cava
     discord
     gradle
     gcc

@@ -1,0 +1,11 @@
+Attempting to require module: obsidian.pickers._fzf
+Error detected while processing pre-vimrc command line:
+E5108: Error executing lua ...-lua-0.0.2246-1-unstable-0.0.2246-1/lua/fzf-lua/init.lua:37: serverstart(): Vim:Failed to start server: address already in use. Please make sure 'XDG_RUNTIME_DIR' (/nix/var/nix/builds/nix-build-vimplugin-obsidian.nvim-2025-10-11.drv-60007-645984664/nvim._nixbld2/SH8eg4) is writeable
+stack traceback:
+        [C]: in function 'error'
+        ...-lua-0.0.2246-1-unstable-0.0.2246-1/lua/fzf-lua/init.lua:37: in main chunk
+        [C]: in function 'require'
+        ...n-obsidian.nvim-2025-10-11/lua/obsidian/pickers/_fzf.lua:1: in main chunk
+        [C]: in function 'require'
+        [string ":lua"]:1: in main chunk
+Entering Ex mode.  Type "visual" to go to Normal mode.
