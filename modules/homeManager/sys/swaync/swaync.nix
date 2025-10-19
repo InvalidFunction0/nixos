@@ -13,7 +13,7 @@
   config = {
     services.swaync = {
       enable = lib.mkIf config.swaync.enable true;
-      # style = ./swaync-style.css;
+      style = ./swaync-style.css;
     };
   };
 }

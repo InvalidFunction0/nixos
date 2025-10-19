@@ -105,12 +105,13 @@
 
       exec-once = [
         "swaync"
-        "hypridle"
         "albert"
         "discord"
         "steam"
         "zen"
+        "hypridle"
         "hyprsunset"
+        "hyprpaper"
         "quickshell"
       ];
 
