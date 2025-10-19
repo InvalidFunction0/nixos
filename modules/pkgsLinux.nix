@@ -14,6 +14,8 @@
     }))
     wl-clipboard
 
+    gnome-themes-extra
+
     # no build on macOS
     nautilus
     bitwarden
