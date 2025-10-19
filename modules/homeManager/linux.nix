@@ -19,16 +19,23 @@
   };
 
   # set dark modes globally
+  home.packages = with pkgs; [ adw-gtk3 ];
+
   gtk = {
     enable = true;
     theme = {
-      name = "Adwaita-dark";
-      package = pkgs.gnome-themes-extra;
+      name = "catppuccin-macchiato-blue-compact+default";
+      package = pkgs.catppuccin-gtk.override {
+        accents = [ "blue" ];
+        variant = "macchiato";
+        size = "compact";
+      };
     };
   };
 
   dconf.settings."org/gnome/desktop/interface" = {
     color-scheme = "prefer-dark";
+    gtk-theme = "catppuccin-macchiato-blue-compact+default";
   };
 
   swaync.enable = true;

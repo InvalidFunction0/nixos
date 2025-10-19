@@ -11,6 +11,7 @@
     ../../modules/homeManager/shell/eza.nix
     # ../../modules/homeManager/editors/zed.nix
     ../../modules/homeManager/editors/nvim.nix
+    ../../modules/sys/stylix.nix
   ];
 
   zsh.enable = true;

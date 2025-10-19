@@ -45,6 +45,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-citizen.url = "github:LovingMelody/nix-citizen";
     nix-gaming.url = "github:fufexan/nix-gaming";
     nix-citizen.inputs.nix-gaming.follows = "nix-gaming";
@@ -52,10 +57,10 @@
 
   outputs =
     {
-      self,
       nixpkgs,
       nix-darwin,
       home-manager,
+      stylix,
       ...
     }@inputs:
     {
@@ -113,6 +118,7 @@
           ./modules/darwin.nix
           ./modules/pkgsDarwin.nix
           home-manager.darwinModules.home-manager
+          stylix.darwinModules.stylix
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
@@ -134,6 +140,7 @@
           modules = [
             ./hosts/linux/configuration.nix
             inputs.home-manager.nixosModules.default
+            stylix.nixosModules.stylix
           ];
         };
 
