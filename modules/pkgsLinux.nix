@@ -21,6 +21,7 @@
     bibata-cursors
     ghostty
     notion
+    figma-linux
 
     # gaming
     inputs.nix-citizen.packages.${system}.star-citizen
