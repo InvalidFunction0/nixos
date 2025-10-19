@@ -23,19 +23,14 @@
 
   gtk = {
     enable = true;
-    theme = {
-      name = "catppuccin-macchiato-blue-compact+default";
-      package = pkgs.catppuccin-gtk.override {
-        accents = [ "blue" ];
-        variant = "macchiato";
-        size = "compact";
-      };
-    };
-  };
-
-  dconf.settings."org/gnome/desktop/interface" = {
-    color-scheme = "prefer-dark";
-    gtk-theme = "catppuccin-macchiato-blue-compact+default";
+    # Theme = {
+    #   name = "catppuccin-macchiato-blue-compact+default";
+    #   package = pkgs.catppuccin-gtk.override {
+    #     accents = [ "blue" ];
+    #     variant = "macchiato";
+    #     size = "compact";
+    #   };
+    # };
   };
 
   swaync.enable = true;
