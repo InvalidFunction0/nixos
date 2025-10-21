@@ -269,7 +269,7 @@
           nixd.enable = true;
 
           # qml
-          qmlls.enable = true;
+          # qmlls.enable = true;
         };
       };
     };
