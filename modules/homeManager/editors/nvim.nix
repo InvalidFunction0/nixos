@@ -88,6 +88,7 @@
             # python = [ "isort" "black" ];
             nix = [ "nixfmt" ];
             rust = [ "rustfmt" ];
+            qml = [ "qmlformat" ];
 
             "*" = [ "codespell" ];
             "_" = [ "prettier" ];
@@ -266,6 +267,9 @@
 
           # nix
           nixd.enable = true;
+
+          # qml
+          qmlls.enable = true;
         };
       };
     };
