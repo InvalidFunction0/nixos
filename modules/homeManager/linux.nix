@@ -4,6 +4,7 @@
     ../../modules/homeManager/sys/swaync/swaync.nix
     ../../modules/homeManager/sys/wlogout/wlogout.nix
     ../../modules/homeManager/sys/hypr/hyprland.nix
+    ../../modules/homeManager/sys/stylix.nix
   ];
 
   home.pointerCursor = {

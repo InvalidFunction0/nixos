@@ -72,7 +72,7 @@
 
         #   # Create /etc/zshrc that loads the nix-darwin environment.
         #   programs.zsh.enable = true;
-        # specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs; };
         modules = [
           {
             nixpkgs.config = {
@@ -118,7 +118,7 @@
           ./modules/darwin.nix
           ./modules/pkgsDarwin.nix
           home-manager.darwinModules.home-manager
-          stylix.darwinModules.stylix
+          # stylix.darwinModules.stylix
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
@@ -133,7 +133,6 @@
       };
 
       nixosConfigurations = {
-
         linux = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
           system = "x86_64-linux";
@@ -141,14 +140,6 @@
             ./hosts/linux/configuration.nix
             inputs.home-manager.nixosModules.default
             stylix.nixosModules.stylix
-          ];
-        };
-
-        workMachine = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          system = "aarch64-darwin";
-          modules = [
-            ./hosts/workMachine/configuration.nix
           ];
         };
       };
