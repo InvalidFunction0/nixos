@@ -16,6 +16,8 @@
 
     gnome-themes-extra
 
+    kdePackages.qtdeclarative
+
     # no build on macOS
     nautilus
     bitwarden
