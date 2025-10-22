@@ -18,6 +18,8 @@
 
     kdePackages.qtdeclarative
 
+    bottles
+
     # no build on macOS
     nautilus
     bitwarden

@@ -40,9 +40,10 @@
 
   programs.git = {
     enable = true;
-    userName = "Ayaan";
-    userEmail = "ayaan.waqas@outlook.com";
-    extraConfig = {
+    settings.user = {
+      name = "Ayaan";
+      email = "ayaan.waqas@outlook.com";
+
       init.defaultBranch = "main";
     };
   };
