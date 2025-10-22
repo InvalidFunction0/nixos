@@ -15,10 +15,10 @@
     wl-clipboard
 
     gnome-themes-extra
-
     kdePackages.qtdeclarative
-
     bottles
+    wpsoffice
+    onlyoffice-bin
 
     # no build on macOS
     nautilus
