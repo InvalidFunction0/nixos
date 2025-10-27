@@ -5,7 +5,6 @@
     hyprlock
     hyprshot
     hyprsunset
-    pavucontrol
     albert
     rofi
     openrgb-with-all-plugins
@@ -19,6 +18,16 @@
     bottles
     wpsoffice
     onlyoffice-bin
+
+    pwvucontrol
+    pavucontrol
+    alsa-firmware
+    bluez
+    bluez-tools
+    bluez-alsa
+    pamixer
+    libcamera
+    bluez5
 
     # no build on macOS
     nautilus
@@ -55,5 +64,9 @@
     nixfmt-rfc-style
     rustfmt
     codespell
+
+    jre21_minimal
+    jre17_minimal
+    jre8
   ];
 }

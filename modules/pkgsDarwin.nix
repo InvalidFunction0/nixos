@@ -27,6 +27,8 @@
     neofetch
     unzip
 
+    modrinth-app
+
     bun
 
     pciutils

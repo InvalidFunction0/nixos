@@ -55,7 +55,8 @@
         kb_layout = "gb";
         numlock_by_default = true;
         follow_mouse = 1;
-        sensitivity = 0;
+        sensitivity = -0.12;
+        accel_profile = "flat";
       };
 
       misc = {

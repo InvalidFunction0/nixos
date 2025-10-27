@@ -37,6 +37,12 @@ let
       };
     };
 
+    system = {
+      musnix = {
+        url = "github:musnix/musnix";
+      };
+    };
+
     applications = {
       nixvim = {
         url = "github:nix-community/nixvim";
@@ -50,9 +56,6 @@ let
     };
   };
 
-  # shellInputs = {
-  #   quickshell
-  # }
 in
 {
   flakegen = {
@@ -62,4 +65,5 @@ in
 // mainInputs
 // gaming
 // desktopInputs.hypr
+// desktopInputs.system
 // desktopInputs.applications
