@@ -19,6 +19,8 @@
     wpsoffice
     onlyoffice-bin
 
+    bitwig-studio
+
     pwvucontrol
     pavucontrol
     alsa-firmware
