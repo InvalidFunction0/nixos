@@ -26,6 +26,8 @@
 
     obsidian
 
+    docker
+
     pwvucontrol
     pavucontrol
     alsa-firmware
