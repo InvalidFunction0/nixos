@@ -20,6 +20,11 @@
     onlyoffice-bin
 
     bitwig-studio
+    vital
+
+    obs-studio
+
+    obsidian
 
     pwvucontrol
     pavucontrol
