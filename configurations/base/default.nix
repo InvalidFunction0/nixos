@@ -21,6 +21,8 @@ in
 {
   imports = [
     home-manager.nixosModules.home-manager
+
+    (import ./packages self)
   ];
 
   options.configs.base = {
@@ -31,7 +33,13 @@ in
   };
 
   config = mkIf cfg.enable {
+    # set the flake location for nh to use
     environment.variables.NH_FLAKE = mkDefault "/home/${mainUser}/nixos";
+
+    stylix.enable = true;
+    stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-macchiato.yaml";
+
+    time.timeZone = "Europe/London";
 
     nix.settings = {
       # store
@@ -46,16 +54,20 @@ in
       http-connections = 0;
       show-trace = true;
 
+      # remote builds
       trusted-users = [
         "ayaan"
         "nixremote"
       ];
     };
 
+    nixpkgs.config.allowUnfree = true;
+
     programs.nh = {
       enable = true;
       package = pkgs.nh;
 
+      # weekly nix-store cleanup
       clean = {
         enable = true;
         extraArgs = "--keep-since 10d";
@@ -65,6 +77,8 @@ in
     environment.systemPackages = attrValues {
       switch = pkgs.writeShellApplication {
         name = "switch";
+
+        # script to switch using the flake output of the device hostName
         text = ''
           exec nh os switch --hostname ${config.networking.hostName}
         '';
@@ -76,6 +90,29 @@ in
         nfs-utils
         ntfs3g
         ;
+    };
+
+    users.users.${mainUser} = {
+      isNormalUser = true;
+      extraGroups = [
+        "wheel"
+        "audio"
+        "networkmanager"
+        "libvirtd"
+      ];
+
+      shell = mkDefault pkgs.zsh;
+    };
+
+    home-manager.useGlobalPkgs = true;
+    home-manager.users.${mainUser} = {
+      imports = [
+        {
+          programs.zsh.shellAliases.nh = "env -u NH_FLAKE nh";
+        }
+      ];
+
+      home.stateVersion = config.system.stateVersion;
     };
   };
 }

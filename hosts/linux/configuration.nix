@@ -15,9 +15,6 @@
     ../../modules/nixos/hyprland.nix
 
     ../../modules/pkgsLinux.nix
-    ../../modules/pkgsDarwin.nix
-    # inputs.home-manager.nixosModules.default
-    # inputs.musnix.nixosModules.musnix
   ];
 
   stylix.enable = true;
@@ -55,9 +52,6 @@
     "vm.max_map_count" = 32000000;
     "fs.file-max" = 524288;
   };
-
-  networking.hostName = "mainSystem"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   nix.settings = {
     experimental-features = [
@@ -100,9 +94,6 @@
     enableAllFirmware = true;
     graphics.enable = true;
   };
-
-  # Set your time zone.
-  time.timeZone = "Europe/London";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_GB.UTF-8";
@@ -150,21 +141,6 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    audio.enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    wireplumber = {
-      enable = true;
-      package = pkgs.wireplumber;
-    };
-  };
-
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -195,7 +171,7 @@
   home-manager = {
     # also pass inputs to home-manager modules
     extraSpecialArgs = { inherit inputs; };
-    backupFileExtension = "backup";
+    backupFileExtension = "bak";
     users = {
       "ayaan" = import ./home.nix;
     };
@@ -224,7 +200,7 @@
 
     fontconfig = {
       defaultFonts = {
-        monospace = [ "Cascadia Code" ];
+        monospace = [ "CaskaydiaCove NF" ];
       };
     };
   };
@@ -254,6 +230,5 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.05"; # Did you read the comment?
 
 }

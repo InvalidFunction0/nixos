@@ -19,4 +19,20 @@ in
       ]
       ++ extraModules;
     };
+
+  mkDarwin =
+    {
+      extraModules ? [ ],
+      mainUser ? "ayaanwaqas",
+    }:
+    inputs.nix-darwin.lib.darwinSystem {
+      system = "aarch64-darwin";
+      specialArgs = { inherit inputs mainUser; };
+
+      modules = [
+        inputs.home-manager.darwinModules.home-manager
+        inputs.stylix.darwinModules.stylix
+      ]
+      ++ extraModules;
+    };
 }
