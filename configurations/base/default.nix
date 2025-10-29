@@ -14,14 +14,12 @@ let
     mkOption
     types
     ;
-  inherit (self.inputs) home-manager;
+  # inherit (self.inputs) home-manager;
 
   cfg = config.configs.base;
 in
 {
   imports = [
-    home-manager.nixosModules.home-manager
-
     (import ./packages self)
   ];
 
@@ -63,17 +61,6 @@ in
 
     nixpkgs.config.allowUnfree = true;
 
-    programs.nh = {
-      enable = true;
-      package = pkgs.nh;
-
-      # weekly nix-store cleanup
-      clean = {
-        enable = true;
-        extraArgs = "--keep-since 10d";
-      };
-    };
-
     environment.systemPackages = attrValues {
       switch = pkgs.writeShellApplication {
         name = "switch";
@@ -85,22 +72,7 @@ in
       };
     };
 
-    system.fsPackages = attrValues {
-      inherit (pkgs)
-        nfs-utils
-        ntfs3g
-        ;
-    };
-
     users.users.${mainUser} = {
-      isNormalUser = true;
-      extraGroups = [
-        "wheel"
-        "audio"
-        "networkmanager"
-        "libvirtd"
-      ];
-
       shell = mkDefault pkgs.zsh;
     };
 
@@ -112,7 +84,9 @@ in
         }
       ];
 
-      home.stateVersion = config.system.stateVersion;
+      home.stateVersion = mkDefault config.system.stateVersion;
     };
   };
+
+  _file = ./default.nix;
 }

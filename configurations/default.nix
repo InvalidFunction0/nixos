@@ -10,4 +10,7 @@
 
   # the config for my main PC
   mainSystem = import ./mainSystem self;
+
+  # the config for my MacBook
+  macbook = import ./macbook self;
 }

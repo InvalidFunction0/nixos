@@ -7,6 +7,7 @@ self:
 {
   imports = [
     self.configs.base
+    self.configs.baseNixOS
     ../../hosts/linux/configuration.nix
   ];
 

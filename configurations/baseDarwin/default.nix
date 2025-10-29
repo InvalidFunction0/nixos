@@ -3,19 +3,27 @@ self:
   mainUser,
   config,
   lib,
+  pkgs,
   inputs,
   ...
 }:
 let
   inherit (lib)
-    mkDefault
     mkIf
     mkOption
     types
     ;
+  inherit (self.inputs) home-manager;
+
   cfg = config.configs.baseDarwin;
 in
 {
+  imports = [
+    self.configs.base
+
+    home-manager.darwinModules.home-manager
+  ];
+
   options.configs.baseDarwin = {
     enable = mkOption {
       type = types.bool;
@@ -24,20 +32,19 @@ in
   };
 
   config = mkIf cfg.enable {
-    imports = [
-      self.configs.base
-
-      inputs.home-manager.darwinModules.home-manager
-    ];
-
     nixpkgs.hostPlatform = "aarch64-darwin";
 
     # required for Determinate Nix, which I use on all Darwin systems
     nix.enable = false;
 
     home-manager.extraSpecialArgs = {
+      inherit inputs;
       isLinux = false;
     };
+
+    environment.systemPackages = [
+      inputs.nh.packages.${pkgs.system}.nh
+    ];
 
     # https://daiderd.com/nix-darwin/manual/index.html#sec-options
 
