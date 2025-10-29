@@ -3,7 +3,6 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 {
-  config,
   pkgs,
   inputs,
   ...
@@ -35,6 +34,8 @@
       xdg-desktop-portal-wlr
     ];
   };
+
+  virtualisation.docker.enable = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -183,8 +184,9 @@
       "networkmanager"
       "wheel"
       "libvirtd"
+      "docker"
     ];
-    packages = with pkgs; [
+    packages = [
       #  thunderbird
     ];
     shell = pkgs.zsh;
