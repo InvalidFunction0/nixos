@@ -18,10 +18,14 @@
 
   outputs =
     inputs@{
-      nixpkgs,
+      self,
       ...
     }:
+    let
+      inherit (self.lib) mkNixOS;
+    in
     {
+      lib = import ./lib { inherit inputs; };
       darwinConfigurations."Ayaans-MacBook-Air" = inputs.nix-darwin.lib.darwinSystem {
         # users.users.ayaanwaqas = {
         #     name = "$USER";
@@ -88,16 +92,19 @@
       };
 
       nixosConfigurations = {
-        linux = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          system = "x86_64-linux";
-          modules = [
-            ./hosts/linux/configuration.nix
-            inputs.home-manager.nixosModules.default
-            inputs.stylix.nixosModules.stylix
-            inputs.musnix.nixosModules.musnix
+        mainSystem = mkNixOS {
+          extraModules = [
+            self.configs.mainSystem
           ];
         };
+
+        # server = mkNixOS {
+        #   extraModules = [
+        #     ./hosts/server/configuration.nix
+        #   ];
+        # };
       };
+
+      configs = import ./configurations { inherit self; };
     };
 }

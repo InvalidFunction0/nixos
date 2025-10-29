@@ -651,6 +651,26 @@
         "type": "github"
       }
     },
+    "nh": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1761733523,
+        "narHash": "sha256-Z0i6J9KaMZW7bBwQOj4XZ4mZFfegvaAtvnT3suUMhPc=",
+        "owner": "nix-community",
+        "repo": "nh",
+        "rev": "78494d6b8587c8cb36e51949f1177a4ee42a41f8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nh",
+        "type": "github"
+      }
+    },
     "nix-citizen": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -931,6 +951,7 @@
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "musnix": "musnix",
+        "nh": "nh",
         "nix-citizen": "nix-citizen",
         "nix-darwin": "nix-darwin",
         "nix-gaming": "nix-gaming",

@@ -16,8 +16,8 @@
 
     ../../modules/pkgsLinux.nix
     ../../modules/pkgsDarwin.nix
-    inputs.home-manager.nixosModules.default
-    inputs.musnix.nixosModules.musnix
+    # inputs.home-manager.nixosModules.default
+    # inputs.musnix.nixosModules.musnix
   ];
 
   stylix.enable = true;
@@ -56,7 +56,7 @@
     "fs.file-max" = 524288;
   };
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "mainSystem"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   nix.settings = {

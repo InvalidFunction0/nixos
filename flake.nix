@@ -9,6 +9,10 @@
     };
     hyprland.url = "github:hyprwm/Hyprland";
     musnix.url = "github:musnix/musnix";
+    nh = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/nh";
+    };
     nix-citizen = {
       inputs.nix-gaming.follows = "nix-gaming";
       url = "github:LovingMelody/nix-citizen";
