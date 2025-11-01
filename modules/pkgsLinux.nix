@@ -8,9 +8,6 @@
     albert
     rofi
     openrgb-with-all-plugins
-    (waybar.overrideAttrs (oldAttrs: {
-      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-    }))
     wl-clipboard
 
     gnome-themes-extra

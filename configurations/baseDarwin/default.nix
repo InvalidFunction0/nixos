@@ -19,8 +19,6 @@ let
 in
 {
   imports = [
-    self.configs.base
-
     home-manager.darwinModules.home-manager
   ];
 
@@ -117,4 +115,6 @@ in
     # touchid for sudo authentication
     security.pam.services.sudo_local.touchIdAuth = true;
   };
+
+  _file = ./default.nix;
 }

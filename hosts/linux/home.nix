@@ -10,6 +10,6 @@
     cabextract
 
     winetricks
-    wineWowPackages.stable
+    # wineWowPackages.stable
   ];
 }

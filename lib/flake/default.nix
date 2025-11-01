@@ -1,6 +1,6 @@
 inputs:
 let
-  inherit (builtins) mapAttrs;
+  inherit (builtins) mkIf mkMerge;
 in
 {
   mkNixOS =
@@ -35,4 +35,11 @@ in
       ]
       ++ extraModules;
     };
+
+  mkIfElse =
+    cond: yes: no:
+    mkMerge [
+      (mkIf cond yes)
+      (mkIf (!cond) no)
+    ];
 }

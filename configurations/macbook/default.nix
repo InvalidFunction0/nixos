@@ -25,18 +25,16 @@ in
 
   system.primaryUser = mainUser;
 
-  # home-manager.users.${mainUser} = {
-  #   imports = [
-  #     ../../modules/homeManager/all.nix
-  #   ];
+  home-manager.users.${mainUser} = {
+    imports = [
+      ../../modules/homeManager/all.nix
+    ];
 
-  #   home = {
-  #     stateVersion = "24.05";
-  #     username = mainUser;
-  #   };
-  # };
-
-  home-manager.users.${mainUser} = import ../../modules/homeManager/all.nix;
+    home = {
+      stateVersion = "24.05";
+      username = mainUser;
+    };
+  };
 
   _file = ./default.nix;
 }

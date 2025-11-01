@@ -32,6 +32,11 @@ in
       gh
       ;
 
+    # audio
+    inherit (pkgs)
+      alsa-utils
+      ;
+
     # misc cli
     inherit (pkgs)
       cmatrix

@@ -21,7 +21,7 @@
         "$mod, G, togglegroup"
         "$mod, T, layoutmsg, togglesplit"
 
-        "$mod, PRINT, exec, hyprshot -m region -o ~/screenshots"
+        "$mod, PRINT, exec, hyprshot --freeze -m region -o ~/screenshots"
 
         "$mod SHIFT, S, movetoworkspace, special"
         "$mod, S, togglespecialworkspace,"
@@ -143,6 +143,8 @@
       dwindle = {
         preserve_split = true;
         pseudotile = true;
+
+        special_scale_factor = 0.75;
       };
     };
   };
