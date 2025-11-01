@@ -14,7 +14,7 @@
     kdePackages.qtdeclarative
     bottles
     wpsoffice
-    onlyoffice-bin
+    onlyoffice-desktopeditors
 
     bitwig-studio
     vital
@@ -37,7 +37,7 @@
 
     # no build on macOS
     nautilus
-    bitwarden
+    bitwarden-desktop
     krita
     bibata-cursors
     ghostty
@@ -53,7 +53,7 @@
     spice
     spice-gtk
     spice-protocol
-    win-virtio
+    virtio-win
     win-spice
     adwaita-icon-theme
 
