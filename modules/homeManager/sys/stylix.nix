@@ -22,6 +22,8 @@
       nixvim.enable = false;
       rofi.enable = false;
       hyprland.enable = false;
+      qt.enable = false;
+      qt.platform = "qtct";
     };
   };
 }

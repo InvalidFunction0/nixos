@@ -60,7 +60,6 @@ in
 
   environment.systemPackages = with pkgs; [
     modrinth-app
-    winePackages.yabridge
   ];
 
   networking.hostName = "mainSystem";
