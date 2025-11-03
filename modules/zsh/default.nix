@@ -11,12 +11,20 @@ let
   cfg = config.shell.zsh;
 in
 {
+  imports = [
+    self.modules.eza
+    self.modules.zoxide
+  ];
+
   options.shell.zsh = {
     enable = mkEnableOption "enables zsh module";
     enableEzaAliases = mkEnableOption "enables Eza aliases for ls and ll";
   };
 
   config = mkIf cfg.enable {
+    shell.eza.enable = true;
+    shell.zoxide.enable = true;
+
     home-manager.users.${mainUser}.programs.zsh = {
       enable = true;
 
@@ -46,4 +54,6 @@ in
       };
     };
   };
+
+  _file = ./default.nix;
 }

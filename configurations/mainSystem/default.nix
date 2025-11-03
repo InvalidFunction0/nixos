@@ -44,6 +44,10 @@ in
   networking.hostName = "mainSystem";
 
   # audio
+  musnix.enable = true;
+  musnix.rtcqs.enable = true;
+  musnix.kernel.realtime = true;
+
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {

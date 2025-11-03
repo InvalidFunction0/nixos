@@ -14,17 +14,18 @@ let
     mkOption
     types
     ;
-  # inherit (self.inputs) home-manager;
+  inherit (self.inputs) home-manager;
 
   cfg = config.configs.base;
 in
 {
   imports = [
     (import ./packages self)
+    home-manager.nixosModules.home-manager
 
     self.modules.zsh
     self.modules.starship
-    # self.modules.nvim
+    self.modules.nvim
   ];
 
   options.configs.base = {
@@ -73,7 +74,7 @@ in
     shell.zsh.enableEzaAliases = true;
     shell.starship.enable = true;
 
-    # editors.nvim.enable = true;
+    editors.nvim.enable = true;
 
     programs.nh = {
       enable = true;
@@ -126,6 +127,9 @@ in
       ];
 
       home.stateVersion = mkDefault config.system.stateVersion;
+
+      programs.home-manager.enable = true;
+      programs.git.enable = true;
     };
   };
 

@@ -20,10 +20,6 @@
   stylix.enable = true;
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-macchiato.yaml";
 
-  musnix.enable = true;
-  musnix.rtcqs.enable = true;
-  musnix.kernel.realtime = true;
-
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [

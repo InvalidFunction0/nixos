@@ -9,14 +9,11 @@ self:
 }:
 let
   inherit (lib) mkOption mkIf types;
+  inherit (inputs) nixvim;
 
   cfg = config.editors.nvim;
 in
 {
-  imports = [
-    inputs.nixvim.homeModules.nixvim
-  ];
-
   options.editors.nvim = {
     enable = mkOption {
       type = types.bool;
@@ -26,6 +23,10 @@ in
 
   config = mkIf cfg.enable {
     home-manager.users.${mainUser} = {
+      imports = [
+        nixvim.homeModules.nixvim
+      ];
+
       programs.neovim = {
         enable = false;
         defaultEditor = true;
