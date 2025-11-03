@@ -21,6 +21,10 @@ in
 {
   imports = [
     (import ./packages self)
+
+    self.modules.zsh
+    self.modules.starship
+    # self.modules.nvim
   ];
 
   options.configs.base = {
@@ -60,6 +64,16 @@ in
     };
 
     nixpkgs.config.allowUnfree = true;
+
+    #
+    # Module config
+    #
+
+    shell.zsh.enable = true;
+    shell.zsh.enableEzaAliases = true;
+    shell.starship.enable = true;
+
+    # editors.nvim.enable = true;
 
     programs.nh = {
       enable = true;

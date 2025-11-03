@@ -11,9 +11,9 @@ let
   cfg = config.shell.zsh;
 in
 {
-  options.shell = {
-    zsh.enable = mkEnableOption "enables zsh module";
-    zsh.enableEzaAliases = mkEnableOption "enables Eza aliases for ls and ll";
+  options.shell.zsh = {
+    enable = mkEnableOption "enables zsh module";
+    enableEzaAliases = mkEnableOption "enables Eza aliases for ls and ll";
   };
 
   config = mkIf cfg.enable {

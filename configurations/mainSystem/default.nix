@@ -12,7 +12,6 @@ in
   imports = [
     self.configs.base
 
-    self.modules.zsh
     ../../hosts/linux/configuration.nix
   ];
 
@@ -23,32 +22,9 @@ in
   # base config
   configs.base.enable = true;
 
-  # module config
-
-  shell.zsh.enable = true;
-  shell.zsh.enableEzaAliases = true;
-
-  nixpkgs.overlays = [
-    (
-      final: prev:
-      let
-        nixpkgs-wine94 =
-          import
-            (prev.fetchFromGithub {
-              owner = "NixOS";
-              repo = "nixpkgs";
-              rev = "f60836eb3a850de917985029feaea7338f6fcb8a"; # wineWow64Packages 9.3 -> 9.4
-              sha256 = "Ln3mD5t96hz5MoDwa8NxHFq76B+V2BOppYf1tnwFBIc=";
-            })
-            {
-              system = "x86_64-linux";
-            };
-      in
-      {
-        inherit (nixpkgs-wine94) yabridge yabridgectl;
-      }
-    )
-  ];
+  #
+  # Module config
+  #
 
   # swapfile
   swapDevices = [
@@ -60,6 +36,9 @@ in
 
   environment.systemPackages = with pkgs; [
     modrinth-app
+    wineWow64Packages.yabridge
+    yabridge
+    yabridgectl
   ];
 
   networking.hostName = "mainSystem";
@@ -78,4 +57,6 @@ in
       package = pkgs.wireplumber;
     };
   };
+
+  _file = ./default.nix;
 }
