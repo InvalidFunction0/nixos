@@ -85,6 +85,7 @@
           enabled = true;
           size = 2;
           passes = 2;
+          noise = 0.25;
           new_optimizations = "on";
           xray = false;
         };
