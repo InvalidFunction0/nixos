@@ -14,10 +14,19 @@ in
   imports = [
     self.configs.baseDarwin
 
+    self.modules.zsh
+    self.modules.starship
+    self.modules.nvim
+
     home-manager.darwinModules.home-manager
   ];
 
   configs.baseDarwin.enable = true;
+
+  shell.zsh.enable = true;
+  shell.zsh.enableEzaAliases = true;
+  shell.starship.enable = true;
+  editors.nvim.enable = true;
 
   networking.hostName = "macbook";
 
@@ -46,10 +55,6 @@ in
   system.primaryUser = mainUser;
 
   home-manager.users.${mainUser} = {
-    imports = [
-      ../../modules/homeManager/all.nix
-    ];
-
     home = {
       stateVersion = "24.05";
       username = mainUser;

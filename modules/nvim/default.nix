@@ -285,6 +285,12 @@ in
               # nix
               nixd.enable = true;
 
+              # markdown
+              marksman.enable = true;
+
+              # python
+              pyright.enable = true;
+
               # qml
               # qmlls.enable = true;
             };
