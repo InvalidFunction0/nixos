@@ -102,7 +102,7 @@ in
             settings = {
               formatters_by_ft = {
                 lua = [ "stylua" ];
-                # python = [ "isort" "black" ];
+                python = [ "ruff" ];
                 nix = [ "nixfmt" ];
                 rust = [ "rustfmt" ];
                 qml = [ "qmlformat" ];

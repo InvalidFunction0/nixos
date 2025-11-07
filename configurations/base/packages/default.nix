@@ -30,6 +30,9 @@ in
       bun
       git
       gh
+      prettier
+      ruff
+      nixfmt
       ;
 
     # audio

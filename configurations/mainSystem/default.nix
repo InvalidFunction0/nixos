@@ -37,8 +37,8 @@ in
   environment.systemPackages = with pkgs; [
     modrinth-app
     wineWowPackages.yabridge
-    yabridge
-    yabridgectl
+    (yabridge.override { wine = wineWowPackages.yabridge; })
+    (yabridgectl.override { wine = wineWowPackages.yabridge; })
   ];
 
   networking.hostName = "mainSystem";
