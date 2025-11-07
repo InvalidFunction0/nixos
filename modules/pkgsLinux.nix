@@ -17,7 +17,7 @@
     onlyoffice-desktopeditors
 
     bitwig-studio
-    vital
+    # vital
 
     obs-studio
 

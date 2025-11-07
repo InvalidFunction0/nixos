@@ -36,7 +36,7 @@ in
 
   environment.systemPackages = with pkgs; [
     modrinth-app
-    wineWow64Packages.yabridge
+    wineWowPackages.yabridge
     yabridge
     yabridgectl
   ];
