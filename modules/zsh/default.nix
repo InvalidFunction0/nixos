@@ -24,6 +24,7 @@ in
   config = mkIf cfg.enable {
     shell.eza.enable = true;
     shell.zoxide.enable = true;
+    shell.zoxide.replacecd = true;
 
     home-manager.users.${mainUser}.programs.zsh = {
       enable = true;
