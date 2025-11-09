@@ -43,7 +43,7 @@ in
     # misc cli
     inherit (pkgs)
       cmatrix
-      # cava
+      cava
       btop
       htop
       lf

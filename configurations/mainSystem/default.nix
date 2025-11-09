@@ -39,6 +39,10 @@ in
     wineWowPackages.yabridge
     (yabridge.override { wine = wineWowPackages.yabridge; })
     (yabridgectl.override { wine = wineWowPackages.yabridge; })
+
+    yazi
+
+    playerctl
   ];
 
   networking.hostName = "mainSystem";
@@ -61,6 +65,9 @@ in
       package = pkgs.wireplumber;
     };
   };
+
+  xdg.terminal-exec.enable = true;
+  xdg.terminal-exec.settings.default = [ "ghostty.desktop" ];
 
   _file = ./default.nix;
 }

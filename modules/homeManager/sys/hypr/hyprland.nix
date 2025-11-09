@@ -7,6 +7,13 @@
     settings = {
       "$mod" = "SUPER";
 
+      # binds even when locked
+      bindl = [
+        ", XF86AudioPlay, exec, playerctl play-pause"
+        ", XF86AudioNext, exec, playerctl next"
+        ", XF86AudioPrev, exec, playerctl previous"
+      ];
+
       bind = [
         "$mod, X, exec, ghostty"
         "$mod, B, exec, zen"
