@@ -26,6 +26,7 @@ in
     self.modules.zsh
     self.modules.starship
     self.modules.nvim
+    self.modules.tmux
   ];
 
   options.configs.base = {
@@ -73,6 +74,7 @@ in
     shell.zsh.enable = true;
     shell.zsh.enableEzaAliases = true;
     shell.starship.enable = true;
+    shell.tmux.enable = true;
 
     editors.nvim.enable = true;
 

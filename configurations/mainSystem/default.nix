@@ -57,10 +57,9 @@ in
       (yabridge.override { wine = wineWowPackages.yabridge; })
       (yabridgectl.override { wine = wineWowPackages.yabridge; })
       vital
-
       yazi
-
       playerctl
+      dioxus-cli
     ]
     ++ [
       zlEq

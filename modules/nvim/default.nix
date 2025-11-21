@@ -104,7 +104,11 @@ in
                 lua = [ "stylua" ];
                 python = [ "ruff" ];
                 nix = [ "nixfmt" ];
-                rust = [ "rustfmt" ];
+                rust = {
+                  __unkeyed-1 = "dioxusfmt";
+                  __unkeyed-2 = "rustfmt";
+                  stop_after_first = false;
+                };
                 qml = [ "qmlformat" ];
 
                 "*" = [ "codespell" ];
@@ -116,7 +120,7 @@ in
               };
 
               format_on_save = {
-                timeout_ms = 250;
+                timeout_ms = 300;
                 lsp_format = "fallback";
               };
               format_after_save = {
@@ -136,6 +140,15 @@ in
                     "--config-precedence"
                     "prefer-file"
                   ];
+                };
+                dioxusfmt = {
+                  command = lib.getExe pkgs.dioxus-cli;
+                  args = [
+                    "fmt"
+                    "-f"
+                    "$FILENAME"
+                  ];
+                  stdin = false;
                 };
                 stylua.command = lib.getExe pkgs.stylua;
                 nixfmt.command = lib.getExe pkgs.nixfmt-rfc-style;
