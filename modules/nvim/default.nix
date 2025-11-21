@@ -70,6 +70,8 @@ in
           softtabstop = 0;
 
           conceallevel = 2;
+
+          scrolloff = 6;
         };
 
         diagnostic.settings = {
@@ -96,6 +98,27 @@ in
           colorful-menu.enable = true;
           emmet.enable = true;
           nvim-autopairs.enable = true;
+
+          rustaceanvim = {
+            enable = true;
+            settings = {
+              server = {
+                # cmd = [
+                #   "rustup"
+                #   "run"
+                #   "nightly"
+                #   "rust-analyzer"
+                # ];
+                default_settings = {
+                  rust-analyzer = {
+                    check.command = "clippy";
+                    inlayHints.lifetimeElisionHints.enable = "always";
+                  };
+                };
+                standalone = false;
+              };
+            };
+          };
 
           conform-nvim = {
             enable = true;
@@ -289,11 +312,12 @@ in
               };
 
               # rust
-              rust_analyzer = {
-                enable = true;
-                installCargo = true;
-                installRustc = true;
-              };
+              # commented in favor of rustaceanvim
+              # rust_analyzer = {
+              #   enable = true;
+              #   installCargo = true;
+              #   installRustc = true;
+              # };
 
               # nix
               nixd.enable = true;
