@@ -30,6 +30,11 @@ in
   shell.tmux.enable = true;
   editors.nvim.enable = true;
 
+  environment.systemPath = [
+    "/opt/homebrew/opt/rustup/bin"
+    "/Users/ayaanwaqas/.dx/bin/"
+  ];
+
   networking.hostName = "macbook";
 
   system.stateVersion = 6;

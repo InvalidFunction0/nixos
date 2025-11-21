@@ -26,6 +26,8 @@ in
         set-option -sa terminal-overrides ",xterm*:Tc"
         set -g mouse on
 
+        set -sg escape-time 10
+
         unbind C-b
         set -g prefix C-Space
         bind C-Space send-prefix
