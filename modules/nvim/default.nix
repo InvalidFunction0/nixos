@@ -92,12 +92,21 @@ in
         plugins = {
           lualine.enable = true;
           luasnip.enable = true;
-          treesitter.enable = true;
           web-devicons.enable = true;
           colorizer.enable = true;
           colorful-menu.enable = true;
           emmet.enable = true;
           nvim-autopairs.enable = true;
+
+          treesitter = {
+            enable = true;
+            settings = {
+              highlight.enable = true;
+              incremental_selection.enable = true;
+              indent.enable = true;
+            };
+          };
+          treesitter-textobjects.enable = true;
 
           rustaceanvim = {
             enable = true;
@@ -302,6 +311,8 @@ in
 
               # lua
               lua_ls.enable = true;
+
+              cssls.enable = true;
 
               # emmet
               emmet_language_server = {
