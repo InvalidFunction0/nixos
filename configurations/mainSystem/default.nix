@@ -60,6 +60,8 @@ in
       yazi
       playerctl
       dioxus-cli
+
+      sqlite
     ]
     ++ [
       zlEq
