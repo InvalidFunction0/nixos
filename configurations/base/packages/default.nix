@@ -24,8 +24,8 @@ in
     # dev
     inherit (pkgs)
       cargo
-      gcc
-      gradle
+      # gcc
+      # gradle
       rustup
       bun
       git

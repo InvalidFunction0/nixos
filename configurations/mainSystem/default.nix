@@ -13,6 +13,7 @@ in
 {
   imports = [
     self.configs.base
+    ./hardware-configuration.nix
 
     ../../hosts/linux/configuration.nix
   ];
@@ -64,7 +65,7 @@ in
       sqlite
     ]
     ++ [
-      zlEq
+      # zlEq
     ];
 
   # yabridge config
@@ -83,7 +84,7 @@ in
   # audio
   # musnix.enable = true;
   musnix.rtcqs.enable = true;
-  musnix.kernel.realtime = true;
+  # musnix.kernel.realtime = true;
 
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;

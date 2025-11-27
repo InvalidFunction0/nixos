@@ -45,7 +45,7 @@
     figma-linux
 
     # gaming
-    inputs.nix-citizen.packages.${system}.star-citizen
+    # inputs.nix-citizen.packages.${system}.star-citizen
     winetricks
 
     virt-manager
