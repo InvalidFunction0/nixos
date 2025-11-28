@@ -46,6 +46,11 @@ let
       musnix = {
         url = "github:musnix/musnix";
       };
+
+      audio = {
+        url = "github:polygon/audio.nix";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
     };
 
     applications = {
@@ -60,7 +65,6 @@ let
       };
     };
   };
-
 in
 {
   flakegen = {

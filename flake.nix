@@ -2,6 +2,10 @@
 
 {
   inputs = {
+    audio = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:polygon/audio.nix";
+    };
     flakegen.url = "github:jorsn/flakegen";
     home-manager = {
       inputs.nixpkgs.follows = "nixpkgs";
