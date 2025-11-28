@@ -45,6 +45,9 @@ in
 
     time.timeZone = "Europe/London";
 
+    services.displayManager.gdm.enable = false;
+    services.displayManager.ly.enable = true;
+
     nix.settings = {
       # store
       keep-outputs = true;
