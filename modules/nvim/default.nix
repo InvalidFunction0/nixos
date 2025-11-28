@@ -223,6 +223,14 @@ in
                   };
                 };
               };
+
+              completion = {
+                documentation.auto_show = true;
+                documentation.auto_show_delay_ms = 100;
+                documentation.window.border = "rounded";
+                ghost_text.enabled = true;
+                menu.border = "rounded";
+              };
             };
           };
 
