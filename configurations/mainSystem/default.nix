@@ -1,6 +1,7 @@
 self:
 {
   mainUser,
+  inputs,
   pkgs,
   lib,
   ...
@@ -50,10 +51,12 @@ in
     ];
   };
 
+  # nixpkgs.overlays = [ inputs.audio.overlays.default ];
+
   environment.systemPackages =
     with pkgs;
     [
-      modrinth-app
+      # modrinth-app
       wineWowPackages.yabridge
       (yabridge.override { wine = wineWowPackages.yabridge; })
       (yabridgectl.override { wine = wineWowPackages.yabridge; })
@@ -66,7 +69,12 @@ in
     ]
     ++ [
       # zlEq
-    ];
+    ]
+    ++ (with inputs.audio.packages.${system}; [
+      bitwig-studio6-latest
+      grainbow
+      paulxstretch
+    ]);
 
   # yabridge config
   home-manager.users.${mainUser}.xdg.configFile."yabridgectl/config.toml".text = ''
