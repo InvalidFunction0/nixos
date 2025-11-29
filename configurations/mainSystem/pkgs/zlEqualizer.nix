@@ -16,11 +16,11 @@ let
 in
 stdenv.mkDerivation rec {
   pname = "zlEqualizer";
-  version = "2-1.0.2";
+  version = "2-1.0.3";
   src = requireFile {
-    message = "run nix-store add-file ZL.Equalizer.2-1.0.2-Linux-x86.zip";
-    name = "ZL.Equalizer.2-1.0.2-Linux-x86.zip";
-    sha256 = "e737d86a7c72235225bcdbcb6ae0d0251665c9ff770da414fda0888ad289755b";
+    message = "run nix-store add-file ZL.Equalizer.2-1.0.3-Linux-x86.zip";
+    name = "ZL.Equalizer.2-1.0.3-Linux-x86.zip";
+    sha256 = "7de672a9193733e13bdcd72fe8e275ce762d42713fdf934ce927aaef14fe0b03";
   };
   nativeBuildInputs = [
     unzip
