@@ -60,7 +60,7 @@ in
       wineWowPackages.yabridge
       (yabridge.override { wine = wineWowPackages.yabridge; })
       (yabridgectl.override { wine = wineWowPackages.yabridge; })
-      vital
+      # vital
       yazi
       playerctl
       dioxus-cli
@@ -68,12 +68,13 @@ in
       sqlite
     ]
     ++ [
-      # zlEq
+      zlEq
+      inputs.vicinae.packages.${system}.default
     ]
     ++ (with inputs.audio.packages.${system}; [
       bitwig-studio6-latest
-      grainbow
-      paulxstretch
+      # grainbow
+      # paulxstretch
     ]);
 
   # yabridge config
@@ -90,9 +91,9 @@ in
   networking.hostName = "mainSystem";
 
   # audio
-  # musnix.enable = true;
+  musnix.enable = true;
   musnix.rtcqs.enable = true;
-  # musnix.kernel.realtime = true;
+  musnix.kernel.realtime = true;
 
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
