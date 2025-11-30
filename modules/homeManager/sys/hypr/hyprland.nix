@@ -19,7 +19,8 @@
         "$mod, B, exec, zen"
         "$mod, E, exec, nautilus"
         "$mod, R, exec, ~/.config/rofi/launchers/type-1/launcher.sh"
-        "ALT, SPACE, exec, albert toggle"
+        # "ALT, SPACE, exec, albert toggle"
+        "ALT, SPACE, exec, vicinae toggle"
         "$mod, ESCAPE, exec, wlogout"
 
         "$mod, Q, killactive"
@@ -118,7 +119,7 @@
 
       exec-once = [
         "swaync"
-        "albert"
+        # "albert"
         "discord"
         "steam"
         "zen"
@@ -126,6 +127,10 @@
         "hyprsunset"
         "hyprpaper"
         "quickshell"
+      ];
+
+      exec = [
+        "vicinae server"
       ];
 
       workspace = [

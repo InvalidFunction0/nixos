@@ -5,7 +5,6 @@
     hyprlock
     hyprshot
     hyprsunset
-    albert
     rofi
     openrgb-with-all-plugins
     wl-clipboard
