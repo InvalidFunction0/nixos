@@ -16,9 +16,6 @@
     wpsoffice
     onlyoffice-desktopeditors
 
-    bitwig-studio
-    # vital
-
     obs-studio
 
     obsidian
