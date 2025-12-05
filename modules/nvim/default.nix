@@ -129,6 +129,19 @@ in
             };
           };
 
+          flutter-tools = {
+            enable = true;
+
+            settings = {
+              decorations.statusline = {
+                app_version = true;
+                device = true;
+              };
+              lsp.color.enabled = true;
+              widget_guides.enabled = true;
+            };
+          };
+
           conform-nvim = {
             enable = true;
             settings = {

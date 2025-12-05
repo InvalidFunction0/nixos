@@ -64,8 +64,10 @@ in
       yazi
       playerctl
       dioxus-cli
-
       sqlite
+      flutter
+      android-studio
+      devenv
     ]
     ++ [
       zlEq
@@ -76,6 +78,8 @@ in
       # grainbow
       # paulxstretch
     ]);
+
+  nixpkgs.config.android_sdk.accept_license = true;
 
   # yabridge config
   home-manager.users.${mainUser}.xdg.configFile."yabridgectl/config.toml".text = ''
