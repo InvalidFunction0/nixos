@@ -72,6 +72,8 @@ in
           conceallevel = 2;
 
           scrolloff = 6;
+
+          wrap = false;
         };
 
         diagnostic.settings = {
@@ -97,6 +99,7 @@ in
           colorful-menu.enable = true;
           emmet.enable = true;
           nvim-autopairs.enable = true;
+          markview.enable = true;
 
           treesitter = {
             enable = true;
