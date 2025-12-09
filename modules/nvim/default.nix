@@ -98,8 +98,37 @@ in
           colorizer.enable = true;
           colorful-menu.enable = true;
           emmet.enable = true;
-          nvim-autopairs.enable = true;
           markview.enable = true;
+
+          mini.enable = true;
+          mini.modules = {
+            comment = {
+              mappings = {
+                comment = "<leader>/";
+                comment_line = "<leader>/";
+                comment_visual = "<leader>/";
+                textobject = "<leader>/";
+              };
+            };
+
+            indentscope = {
+              options = {
+                border = "both";
+                indent_at_cursor = true;
+              };
+              symbol = "╎";
+            };
+
+            pairs = {
+              modes = {
+                command = true;
+                insert = true;
+                terminal = false;
+              };
+            };
+
+            surround = { };
+          };
 
           treesitter = {
             enable = true;
@@ -272,15 +301,6 @@ in
             };
           };
 
-          comment = {
-            enable = true;
-
-            settings.toggler = {
-              block = "<leader>f/";
-              line = "<leader>/";
-            };
-          };
-
           oil = {
             enable = true;
 
@@ -290,6 +310,8 @@ in
               keymaps = {
                 "<leader>c" = "actions.open_cwd";
               };
+
+              view_options.show_hidden = true;
             };
           };
 
@@ -302,27 +324,27 @@ in
             };
           };
 
-          indent-blankline = {
-            enable = true;
-            autoLoad = true;
+          # indent-blankline = {
+          #   enable = true;
+          #   autoLoad = true;
 
-            settings = {
-              scope.enabled = true;
+          #   settings = {
+          #     scope.enabled = true;
 
-              indent.highlight = [
-                "MacchiatoRed"
-                # "MacchiatoMaroon"
-                "MacchiatoPeach"
-                "MacchiatoYellow"
-                "MacchiatoGreen"
-                "MacchiatoTeal"
-                # "MacchiatoSky"
-                "MacchiatoSapphire"
-                "MacchiatoBlue"
-                "MacchiatoLavender"
-              ];
-            };
-          };
+          #     indent.highlight = [
+          #       "MacchiatoRed"
+          #       # "MacchiatoMaroon"
+          #       "MacchiatoPeach"
+          #       "MacchiatoYellow"
+          #       "MacchiatoGreen"
+          #       "MacchiatoTeal"
+          #       # "MacchiatoSky"
+          #       "MacchiatoSapphire"
+          #       "MacchiatoBlue"
+          #       "MacchiatoLavender"
+          #     ];
+          #   };
+          # };
 
           lsp = {
             enable = true;

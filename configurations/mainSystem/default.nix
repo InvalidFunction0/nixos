@@ -57,9 +57,12 @@ in
     with pkgs;
     [
       # modrinth-app
-      wineWowPackages.yabridge
-      (yabridge.override { wine = wineWowPackages.yabridge; })
-      (yabridgectl.override { wine = wineWowPackages.yabridge; })
+      # wineWowPackages.yabridge
+      # (yabridge.override { wine = wineWowPackages.yabridge; })
+      # (yabridgectl.override { wine = wineWowPackages.yabridge; })
+      yabridge
+      yabridgectl
+      wine
       # vital
       yazi
       playerctl
