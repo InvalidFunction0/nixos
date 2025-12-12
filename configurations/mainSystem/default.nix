@@ -69,7 +69,6 @@ in
       dioxus-cli
       sqlite
       flutter
-      android-studio
       devenv
     ]
     ++ [
