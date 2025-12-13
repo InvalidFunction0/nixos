@@ -17,6 +17,8 @@ in
     ./hardware-configuration.nix
 
     ../../hosts/linux/configuration.nix
+
+    self.modules.niri
   ];
 
   # state version
@@ -57,12 +59,12 @@ in
     with pkgs;
     [
       # modrinth-app
-      wineWowPackages.yabridge
+      # wineWowPackages.yabridge
       # (yabridge.override { wine = wineWowPackages.yabridge; })
       # (yabridgectl.override { wine = wineWowPackages.yabridge; })
       yabridge
       yabridgectl
-      # wineWowPackages.staging
+      wineWowPackages.staging
       # vital
       yazi
       playerctl
@@ -70,6 +72,7 @@ in
       sqlite
       flutter
       devenv
+      alacritty
     ]
     ++ [
       zlEq
@@ -100,6 +103,8 @@ in
   musnix.enable = true;
   musnix.rtcqs.enable = true;
   # musnix.kernel.realtime = true;
+
+  niri.enable = true;
 
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;

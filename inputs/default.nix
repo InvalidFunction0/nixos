@@ -42,6 +42,12 @@ let
       };
     };
 
+    niri = {
+      niri = {
+        url = "github:sodiboo/niri-flake";
+      };
+    };
+
     system = {
       musnix = {
         url = "github:musnix/musnix";
@@ -79,5 +85,6 @@ in
 // mainInputs
 // gaming
 // desktopInputs.hypr
+// desktopInputs.niri
 // desktopInputs.system
 // desktopInputs.applications

@@ -11,5 +11,7 @@
 
   nvim = import ./nvim self;
 
+  niri = import ./niri self;
+
   _file = ./default.nix;
 }
