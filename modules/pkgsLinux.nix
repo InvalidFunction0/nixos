@@ -67,8 +67,6 @@
     rustfmt
     codespell
 
-    jre21_minimal
-    jre17_minimal
-    jre8
+    jdk21
   ];
 }

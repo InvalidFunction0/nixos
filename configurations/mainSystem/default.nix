@@ -72,7 +72,7 @@ in
       sqlite
       flutter
       devenv
-      alacritty
+      gamescope
     ]
     ++ [
       zlEq
@@ -85,6 +85,7 @@ in
     ]);
 
   nixpkgs.config.android_sdk.accept_license = true;
+  programs.adb.enable = true;
 
   # yabridge config
   home-manager.users.${mainUser}.xdg.configFile."yabridgectl/config.toml".text = ''

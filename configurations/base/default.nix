@@ -118,6 +118,7 @@ in
         "audio"
         "networkmanager"
         "libvirtd"
+        "adbusers"
       ];
 
       shell = mkDefault pkgs.zsh;
