@@ -77,9 +77,11 @@
       general = {
         gaps_in = 10;
         gaps_out = 10;
-        border_size = 5;
-        "col.active_border" = "rgba(0384fcbb) rgba(03fcadbb) 45deg";
-        "col.inactive_border" = "rgba(ff006fbb) rgba(ff4d1cbb) 45deg";
+        border_size = 3;
+        # "col.active_border" = "rgba(0384fcbb) rgba(03fcadbb) 45deg";
+        # "col.inactive_border" = "rgba(ff006fbb) rgba(ff4d1cbb) 45deg";
+        "col.active_border" = "rgb(8aadf4)";
+        "col.inactive_border" = "rgb(ed8796)";
         layout = "dwindle";
       };
 
