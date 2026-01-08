@@ -59,12 +59,12 @@ in
     with pkgs;
     [
       # modrinth-app
-      # wineWowPackages.yabridge
+      wineWowPackages.yabridge
       # (yabridge.override { wine = wineWowPackages.yabridge; })
       # (yabridgectl.override { wine = wineWowPackages.yabridge; })
       yabridge
       yabridgectl
-      wineWowPackages.staging
+      # wineWowPackages.staging
       # vital
       yazi
       playerctl
@@ -73,6 +73,7 @@ in
       flutter
       devenv
       gamescope
+      python314
     ]
     ++ [
       zlEq
