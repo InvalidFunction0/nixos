@@ -280,7 +280,8 @@ in
           };
 
           obsidian = {
-            enable = lib.mkIf (pkgs.system != "aarch64-darwin") true;
+            # enable = lib.mkIf (pkgs.system != "aarch64-darwin") true;
+            enable = true;
             settings = {
               completion = {
                 min_chars = 2;
