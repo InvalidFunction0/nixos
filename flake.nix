@@ -17,6 +17,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/nh";
     };
+    niri.url = "github:sodiboo/niri-flake";
     nix-citizen = {
       inputs.nix-gaming.follows = "nix-gaming";
       url = "github:LovingMelody/nix-citizen";

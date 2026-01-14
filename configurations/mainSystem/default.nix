@@ -17,6 +17,8 @@ in
     ./hardware-configuration.nix
 
     ../../hosts/linux/configuration.nix
+
+    self.modules.niri
   ];
 
   # state version
@@ -57,20 +59,21 @@ in
     with pkgs;
     [
       # modrinth-app
-      # wineWowPackages.yabridge
+      wineWowPackages.yabridge
       # (yabridge.override { wine = wineWowPackages.yabridge; })
       # (yabridgectl.override { wine = wineWowPackages.yabridge; })
       yabridge
       yabridgectl
-      wine
+      # wineWowPackages.staging
       # vital
       yazi
       playerctl
       dioxus-cli
       sqlite
       flutter
-      android-studio
       devenv
+      gamescope
+      python314
     ]
     ++ [
       zlEq
@@ -83,6 +86,7 @@ in
     ]);
 
   nixpkgs.config.android_sdk.accept_license = true;
+  programs.adb.enable = true;
 
   # yabridge config
   home-manager.users.${mainUser}.xdg.configFile."yabridgectl/config.toml".text = ''
@@ -101,6 +105,8 @@ in
   musnix.enable = true;
   musnix.rtcqs.enable = true;
   # musnix.kernel.realtime = true;
+
+  niri.enable = true;
 
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
