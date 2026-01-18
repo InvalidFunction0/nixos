@@ -93,7 +93,6 @@ in
 
         plugins = {
           lualine.enable = true;
-          luasnip.enable = true;
           web-devicons.enable = true;
           colorizer.enable = true;
           colorful-menu.enable = true;
@@ -128,6 +127,15 @@ in
             };
 
             surround = { };
+          };
+
+          luasnip = {
+            enable = true;
+            fromLua = [
+              {
+                paths = ./snippets;
+              }
+            ];
           };
 
           treesitter = {

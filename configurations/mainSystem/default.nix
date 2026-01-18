@@ -75,6 +75,7 @@ in
       gamescope
       python314
       cabextract
+      android-tools
     ]
     ++ [
       zlEq
@@ -87,7 +88,6 @@ in
     ]);
 
   nixpkgs.config.android_sdk.accept_license = true;
-  programs.adb.enable = true;
 
   # yabridge config
   home-manager.users.${mainUser}.xdg.configFile."yabridgectl/config.toml".text = ''
