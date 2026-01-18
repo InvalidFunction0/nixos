@@ -58,7 +58,7 @@ in
   environment.systemPackages =
     with pkgs;
     [
-      # modrinth-app
+      modrinth-app
       wineWowPackages.yabridge
       # (yabridge.override { wine = wineWowPackages.yabridge; })
       # (yabridgectl.override { wine = wineWowPackages.yabridge; })
@@ -74,6 +74,7 @@ in
       devenv
       gamescope
       python314
+      cabextract
     ]
     ++ [
       zlEq

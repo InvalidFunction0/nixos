@@ -249,7 +249,7 @@ in
             settings = {
               keymap.preset = "super-tab";
 
-              sources.min_keyword_length = 1;
+              sources.min_keyword_length = 2;
 
               sources.providers.luasnip = {
                 name = "LuaSnip";
@@ -271,7 +271,8 @@ in
 
               completion = {
                 documentation.auto_show = true;
-                documentation.auto_show_delay_ms = 100;
+                documentation.auto_show_delay_ms = 300;
+                documentation.treesitter_highlighting = false;
                 documentation.window.border = "rounded";
                 ghost_text.enabled = true;
                 menu.border = "rounded";
