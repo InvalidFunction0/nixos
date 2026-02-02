@@ -3,6 +3,7 @@
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
+    systemd.enable = false;
 
     settings = {
       "$mod" = "SUPER";
@@ -96,27 +97,27 @@
           size = 2;
           passes = 2;
           noise = 0.25;
-          new_optimizations = "on";
+          new_optimizations = true;
           xray = false;
         };
       };
 
-      windowrulev2 = [
-        "opacity 1.0 override 1.0 override, class:zen.*"
+      windowrule = [
+        "opacity 1.0 override 1.0 override, match:class zen.*"
 
-        "workspace 2, class:zen.*"
-        "workspace 3, class:discord"
-        "workspace 4, class:steam"
+        "workspace 2, match:class zen.*"
+        "workspace 3, match:class discord"
+        "workspace 4, match:class steam"
+
+        "no_blur 1, match:class quickshell"
 
         # fix for Bitwig losing focus when changing values
-        "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
+        "no_initial_focus 1,match:class ^$,match:title ^$,match:xwayland 1,match:float 1,match:fullscreen 0,match:pin 0"
       ];
 
       layerrule = [
-        # "blur, swaync-control-center"
-        # "blur, swaync-notification-window"
-        "blur, logout_dialog"
-        "blur, class:swaync"
+        "match:namespace logout_dialog, blur off"
+        "match:namespace swaync.*, blur off"
       ];
 
       exec-once = [
