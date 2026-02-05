@@ -76,6 +76,7 @@ in
       python314
       cabextract
       android-tools
+      inputs.nix-citizen.packages.${system}.star-citizen
     ]
     ++ [
       zlEq
