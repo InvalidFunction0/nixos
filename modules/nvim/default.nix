@@ -87,7 +87,7 @@ in
           settings = {
             flavour = "macchiato";
 
-            transparent_background = true;
+            transparent_background = lib.mkIf (pkgs.system != "aarch64-darwin") true;
           };
         };
 
@@ -98,6 +98,7 @@ in
           colorful-menu.enable = true;
           emmet.enable = true;
           markview.enable = true;
+          typst-preview.enable = true;
 
           mini.enable = true;
           mini.modules = {
@@ -365,6 +366,9 @@ in
               # js/ts
               ts_ls.enable = true;
 
+              # typst
+              tinymist.enable = true;
+
               # lua
               lua_ls.enable = true;
 
@@ -390,7 +394,7 @@ in
               nixd.enable = true;
 
               # markdown
-              marksman.enable = true;
+              # marksman.enable = true;
 
               # python
               pyright.enable = true;
