@@ -26,6 +26,12 @@ in
 
   shell.zsh.enable = true;
   shell.zsh.enableEzaAliases = true;
+  shell.zsh.extraShellConfig = ''
+    newnote () {
+      cp ~/git/notes/schoolNotes/templates/main.typ $1
+    }
+  '';
+
   shell.starship.enable = true;
   shell.tmux.enable = true;
   editors.nvim.enable = true;

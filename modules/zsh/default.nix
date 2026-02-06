@@ -6,7 +6,12 @@ self:
   ...
 }:
 let
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib)
+    mkEnableOption
+    mkOption
+    mkIf
+    types
+    ;
 
   cfg = config.shell.zsh;
 in
@@ -19,6 +24,10 @@ in
   options.shell.zsh = {
     enable = mkEnableOption "enables zsh module";
     enableEzaAliases = mkEnableOption "enables Eza aliases for ls and ll";
+    extraShellConfig = mkOption {
+      type = types.str;
+      default = "";
+    };
   };
 
   config = mkIf cfg.enable {
@@ -44,7 +53,8 @@ in
           --multi"
 
           export PATH="/Users/ayaanwaqas/.bun/bin/:$PATH"
-        '';
+        ''
+        + cfg.extraShellConfig;
 
       shellAliases = {
         cl = "clear";
