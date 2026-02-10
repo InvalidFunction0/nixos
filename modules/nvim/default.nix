@@ -41,22 +41,7 @@ in
 
       programs.nixvim = {
         enable = true;
-
         defaultEditor = true;
-
-        highlight = {
-          MacchiatoRed.fg = "#ed8796";
-          MacchiatoMaroon.fg = "#ee99a0";
-          MacchiatoPeach.fg = "#f5a87f";
-          MacchiatoYellow.fg = "#eed49f";
-          MacchiatoGreen.fg = "#a6da95";
-          MacchiatoTeal.fg = "#8bd5ca";
-          MacchiatoSky.fg = "#91d7e3";
-          MacchiatoSapphire.fg = "#7dc4e4";
-          MacchiatoBlue.fg = "#8aadf4";
-          MacchiatoLavender.fg = "#b7bdf8";
-        };
-
         globals.mapleader = " ";
 
         opts = {
@@ -86,19 +71,14 @@ in
 
           settings = {
             flavour = "macchiato";
-
             transparent_background = lib.mkIf (pkgs.system != "aarch64-darwin") true;
           };
         };
 
         plugins = {
-          lualine.enable = true;
-          web-devicons.enable = true;
-          colorizer.enable = true;
-          colorful-menu.enable = true;
-          emmet.enable = true;
-          markview.enable = true;
-          typst-preview.enable = true;
+          #
+          # mini
+          #
 
           mini.enable = true;
           mini.modules = {
@@ -130,6 +110,31 @@ in
             surround = { };
           };
 
+          #
+          # cosmetic
+          #
+
+          colorful-menu.enable = true;
+          web-devicons.enable = true;
+          lualine.enable = true;
+
+          colorizer.enable = true;
+          colorizer.settings.user_default_options.names = false;
+
+          #
+          # unsorted as of yet
+          #
+
+          emmet.enable = true;
+          typst-preview.enable = true;
+
+          markview = {
+            enable = true;
+            settings = {
+              typst.enable = false;
+            };
+          };
+
           luasnip = {
             enable = true;
             fromLua = [
@@ -139,6 +144,7 @@ in
             ];
           };
 
+          treesitter-textobjects.enable = true;
           treesitter = {
             enable = true;
             settings = {
@@ -147,18 +153,11 @@ in
               indent.enable = true;
             };
           };
-          treesitter-textobjects.enable = true;
 
           rustaceanvim = {
             enable = true;
             settings = {
               server = {
-                # cmd = [
-                #   "rustup"
-                #   "run"
-                #   "nightly"
-                #   "rust-analyzer"
-                # ];
                 default_settings = {
                   rust-analyzer = {
                     check.command = "clippy";
@@ -196,6 +195,7 @@ in
                   stop_after_first = false;
                 };
                 qml = [ "qmlformat" ];
+                typst = [ "typstyle" ];
 
                 "*" = [ "codespell" ];
                 "_" = [ "prettier" ];
@@ -239,7 +239,9 @@ in
                 stylua.command = lib.getExe pkgs.stylua;
                 nixfmt.command = lib.getExe pkgs.nixfmt-rfc-style;
                 rustfmt.command = lib.getExe pkgs.rustfmt;
+                ruff.command = lib.getExe pkgs.ruff;
                 codespell.command = lib.getExe pkgs.codespell;
+                typstyle.command = lib.getExe pkgs.typstyle;
               };
             };
           };
@@ -260,23 +262,23 @@ in
 
               sources.min_keyword_length = 2;
 
-              sources.providers.luasnip = {
-                name = "LuaSnip";
-                module = "blink.cmp.sources.luasnip";
-                opts = {
-                  snippets = {
-                    preset = "luasnip";
-                  };
-                  sources = {
-                    default = [
-                      "lsp"
-                      "path"
-                      "snippets"
-                      "buffer"
-                    ];
-                  };
-                };
-              };
+              # sources.providers.luasnip = {
+              #   name = "LuaSnip";
+              #   module = "blink.cmp.sources.luasnip";
+              #   opts = {
+              #     snippets = {
+              #       preset = "luasnip";
+              #     };
+              #     sources = {
+              #       default = [
+              #         "lsp"
+              #         "path"
+              #         "snippets"
+              #         "buffer"
+              #       ];
+              #     };
+              #   };
+              # };
 
               completion = {
                 documentation.auto_show = true;
@@ -285,6 +287,16 @@ in
                 documentation.window.border = "rounded";
                 ghost_text.enabled = true;
                 menu.border = "rounded";
+                menu.draw.components.label.__raw = ''
+                  {
+                    text = function(ctx)
+                        return require("colorful-menu").blink_components_text(ctx)
+                    end,
+                    highlight = function(ctx)
+                        return require("colorful-menu").blink_components_highlight(ctx)
+                    end,
+                  }
+                '';
               };
             };
           };
@@ -335,28 +347,6 @@ in
             };
           };
 
-          # indent-blankline = {
-          #   enable = true;
-          #   autoLoad = true;
-
-          #   settings = {
-          #     scope.enabled = true;
-
-          #     indent.highlight = [
-          #       "MacchiatoRed"
-          #       # "MacchiatoMaroon"
-          #       "MacchiatoPeach"
-          #       "MacchiatoYellow"
-          #       "MacchiatoGreen"
-          #       "MacchiatoTeal"
-          #       # "MacchiatoSky"
-          #       "MacchiatoSapphire"
-          #       "MacchiatoBlue"
-          #       "MacchiatoLavender"
-          #     ];
-          #   };
-          # };
-
           lsp = {
             enable = true;
 
@@ -368,6 +358,7 @@ in
 
               # typst
               tinymist.enable = true;
+              tinymist.settings.formatterMode = "typstyle";
 
               # lua
               lua_ls.enable = true;
@@ -381,14 +372,6 @@ in
                   showSuggestionsAsSnippets = true;
                 };
               };
-
-              # rust
-              # commented in favor of rustaceanvim
-              # rust_analyzer = {
-              #   enable = true;
-              #   installCargo = true;
-              #   installRustc = true;
-              # };
 
               # nix
               nixd.enable = true;

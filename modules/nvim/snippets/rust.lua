@@ -1,3 +1,7 @@
 return {
-	s("debug", fmt('println!("{} = {{{}}}")'), { i(1), rep(1) }),
+	s("debug", {
+		t('println!("'),
+		i(1, "varname"),
+		t(' = {}", '),
+	}),
 }
