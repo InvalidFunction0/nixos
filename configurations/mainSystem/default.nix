@@ -55,6 +55,9 @@ in
 
   # nixpkgs.overlays = [ inputs.audio.overlays.default ];
 
+  # for protonvpn
+  networking.firewall.checkReversePath = false;
+
   environment.systemPackages =
     with pkgs;
     [
@@ -76,7 +79,13 @@ in
       python314
       cabextract
       android-tools
-      inputs.nix-citizen.packages.${system}.star-citizen
+      android-studio
+      inputs.nix-citizen.packages.${system}.star-citizen-umu
+      chromium
+      pv
+      rsync
+      protonvpn-gui
+      mumble
     ]
     ++ [
       zlEq
@@ -91,15 +100,28 @@ in
   nixpkgs.config.android_sdk.accept_license = true;
 
   # yabridge config
-  home-manager.users.${mainUser}.xdg.configFile."yabridgectl/config.toml".text = ''
-    plugin_dirs = [
-      "/home/ayaan/winePlugins/drive_c/Program Files/Common Files/CLAP/",
-      "/home/ayaan/winePlugins/drive_c/Program Files/Common Files/VST3/"
-    ]
-    vst2_location = 'centralized'
-    no_verify = false
-    blacklist = []
-  '';
+  home-manager.users.${mainUser} = {
+    xdg.configFile."yabridgectl/config.toml".text = ''
+      plugin_dirs = [
+        "/home/ayaan/winePlugins/drive_c/Program Files/Common Files/CLAP/",
+        "/home/ayaan/winePlugins/drive_c/Program Files/Common Files/VST3/"
+      ]
+      vst2_location = 'centralized'
+      no_verify = false
+      blacklist = []
+    '';
+
+    home.sessionVariables = {
+      ANDROID_HOME = "$HOME/Android/Sdk/";
+    };
+
+    home.sessionPath = [
+      "$ANDROID_HOME/platform-tools"
+      "$ANDROID_HOME/tools"
+      "$ANDROID_HOME/tools/bin"
+      "$ANDROID_HOME/emulator"
+    ];
+  };
 
   networking.hostName = "mainSystem";
 
