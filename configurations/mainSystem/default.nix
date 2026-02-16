@@ -86,6 +86,7 @@ in
       rsync
       protonvpn-gui
       mumble
+      typst
     ]
     ++ [
       zlEq

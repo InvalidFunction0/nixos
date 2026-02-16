@@ -192,6 +192,7 @@
       nerd-fonts.caskaydia-cove
       material-symbols
       material-icons
+      fira
     ];
 
     fontconfig = {
