@@ -87,6 +87,7 @@ in
       protonvpn-gui
       mumble
       typst
+      ffmpeg
     ]
     ++ [
       zlEq
