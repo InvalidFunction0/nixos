@@ -58,6 +58,11 @@ in
   # for protonvpn
   networking.firewall.checkReversePath = false;
 
+  networking.nameservers = [
+    "1.1.1.1"
+    "8.8.8.8"
+  ];
+
   environment.systemPackages =
     with pkgs;
     [
@@ -88,6 +93,9 @@ in
       mumble
       typst
       ffmpeg
+      cookiecutter
+      gcc
+      vlc
     ]
     ++ [
       zlEq

@@ -34,6 +34,9 @@
 
         "$mod SHIFT, S, movetoworkspace, special"
         "$mod, S, togglespecialworkspace,"
+
+        # disable F11 by binding it to nothing
+        ", F11, exec,"
       ]
       ++ (
         # bind $mod [shift] {1..9} to [move to] {1..9}
