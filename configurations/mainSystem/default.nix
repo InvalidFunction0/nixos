@@ -63,6 +63,8 @@ in
     "8.8.8.8"
   ];
 
+  qt.enable = true;
+
   environment.systemPackages =
     with pkgs;
     [
@@ -96,6 +98,12 @@ in
       cookiecutter
       gcc
       vlc
+      r2modman
+      qmk
+      qmk-udev-rules
+      qmk_hid
+      via
+      vial
     ]
     ++ [
       zlEq
@@ -130,6 +138,22 @@ in
       "$ANDROID_HOME/tools"
       "$ANDROID_HOME/tools/bin"
       "$ANDROID_HOME/emulator"
+    ];
+
+    qt.enable = true;
+    programs.quickshell.enable = true;
+    home.packages = [
+      pkgs.kdePackages.qtdeclarative
+    ];
+  };
+
+  services.udev = {
+    packages = with pkgs; [
+      qmk
+      qmk-udev-rules
+      qmk_hid
+      via
+      vial
     ];
   };
 

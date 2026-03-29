@@ -31,12 +31,13 @@
         "$mod, T, layoutmsg, togglesplit"
 
         "$mod, PRINT, exec, hyprshot --freeze -m region -o ~/screenshots"
+        "$mod SHIFT, S, exec, hyprshot --freeze -m region -o ~/screenshots"
 
-        "$mod SHIFT, S, movetoworkspace, special"
+        # "$mod SHIFT, S, movetoworkspace, special"
         "$mod, S, togglespecialworkspace,"
 
         # disable F11 by binding it to nothing
-        ", F11, exec,"
+        # ", F11, exec,"
       ]
       ++ (
         # bind $mod [shift] {1..9} to [move to] {1..9}
@@ -94,6 +95,7 @@
         active_opacity = 1.0;
         inactive_opacity = 0.8;
         fullscreen_opacity = 1.0;
+        shadow.enabled = false;
 
         blur = {
           enabled = true;
@@ -102,6 +104,7 @@
           noise = 0.25;
           new_optimizations = true;
           xray = false;
+          vibrancy = 0.3;
         };
       };
 

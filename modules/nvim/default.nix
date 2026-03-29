@@ -34,6 +34,8 @@ in
         vimAlias = true;
         vimdiffAlias = true;
 
+        package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+
         plugins = with pkgs.vimPlugins; [
           catppuccin-nvim
         ];
@@ -44,6 +46,8 @@ in
         defaultEditor = true;
         globals.mapleader = " ";
 
+        package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+
         opts = {
           number = true;
           relativenumber = true;
@@ -51,7 +55,7 @@ in
           shiftwidth = 2; # tab width = 2
           expandtab = true;
 
-          tabstop = 8; # so tabs don't masquerade as spaces
+          tabstop = 4; # so tabs don't masquerade as spaces
           softtabstop = 0;
 
           conceallevel = 2;
@@ -72,6 +76,19 @@ in
           settings = {
             flavour = "macchiato";
             transparent_background = lib.mkIf (pkgs.system != "aarch64-darwin") true;
+            custom_highlights = ''
+              function(highlights)
+                return {
+                  Special = { link = "MacchiatoBlue" },
+                }
+              end
+            '';
+          };
+        };
+
+        highlight = {
+          MacchiatoBlue = {
+            fg = "#8aadf4";
           };
         };
 
@@ -91,13 +108,13 @@ in
               };
             };
 
-            indentscope = {
-              options = {
-                border = "both";
-                indent_at_cursor = true;
-              };
-              symbol = "╎";
-            };
+            # indentscope = {
+            #   options = {
+            #     border = "both";
+            #     indent_at_cursor = true;
+            #   };
+            #   symbol = "╎";
+            # };
 
             pairs = {
               modes = {
@@ -127,6 +144,29 @@ in
 
           emmet.enable = true;
           typst-preview.enable = true;
+
+          snacks = {
+            enable = true;
+            settings = {
+              indent = {
+                enable = true;
+                scope = {
+                  enabled = true;
+                  underline = true;
+                };
+              };
+
+              gh.enable = true;
+              git.enable = true;
+
+              picker = {
+                sources = {
+                  gh_issue = { };
+                  gh_pr = { };
+                };
+              };
+            };
+          };
 
           markview = {
             enable = true;
@@ -383,7 +423,11 @@ in
               pyright.enable = true;
 
               # qml
-              # qmlls.enable = true;
+              qmlls.enable = true;
+              qmlls.config.cmd = [
+                "qmlls"
+                "-E"
+              ];
             };
           };
         };
@@ -415,6 +459,11 @@ in
           {
             action = "<cmd>bprev<CR>";
             key = "<M-j>";
+          }
+
+          {
+            action = "<cmd>lua Snacks.git.blame_line()<CR>";
+            key = "<leader>b";
           }
 
           {

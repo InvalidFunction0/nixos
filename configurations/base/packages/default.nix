@@ -62,7 +62,7 @@ in
     ++ (with pkgs; [
       (discord.override {
         withOpenASAR = true;
-        withVencord = true;
+        # withVencord = true;
       })
     ]);
 }
