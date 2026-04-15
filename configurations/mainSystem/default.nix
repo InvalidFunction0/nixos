@@ -57,6 +57,17 @@ in
 
   # for protonvpn
   networking.firewall.checkReversePath = false;
+  networking.firewall.enable = true;
+  networking.firewall.allowedTCPPorts =
+    # Ark SE
+    [ 27020 ];
+  networking.firewall.allowedUDPPorts =
+    # Ark SE
+    [
+      27015 # Steam server browser query
+      7777 # Game client
+      7778 # Raw UDP (always client + 1)
+    ];
 
   networking.nameservers = [
     "1.1.1.1"
@@ -64,6 +75,13 @@ in
   ];
 
   qt.enable = true;
+
+  services.flatpak.enable = true;
+  systemd.services.flatpak-repo = {
+    wantedBy = [ "multi-user.target" ];
+    path = [ pkgs.flatpak ];
+    script = "flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo     ";
+  };
 
   environment.systemPackages =
     with pkgs;
@@ -104,6 +122,11 @@ in
       qmk_hid
       via
       vial
+      element-desktop
+      element-call
+      steamcmd
+      docker-compose
+      protontricks
     ]
     ++ [
       zlEq

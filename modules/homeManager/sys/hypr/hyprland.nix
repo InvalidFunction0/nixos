@@ -31,9 +31,9 @@
         "$mod, T, layoutmsg, togglesplit"
 
         "$mod, PRINT, exec, hyprshot --freeze -m region -o ~/screenshots"
-        "$mod SHIFT, S, exec, hyprshot --freeze -m region -o ~/screenshots"
+        "$mod, HOME, exec, hyprshot --freeze -m region -o ~/screenshots"
 
-        # "$mod SHIFT, S, movetoworkspace, special"
+        "$mod SHIFT, S, movetoworkspace, special"
         "$mod, S, togglespecialworkspace,"
 
         # disable F11 by binding it to nothing
