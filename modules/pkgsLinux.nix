@@ -15,10 +15,7 @@
     wpsoffice
     onlyoffice-desktopeditors
 
-    obs-studio
-
     obsidian
-
     docker
 
     pwvucontrol

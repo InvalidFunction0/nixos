@@ -129,7 +129,7 @@
       exec-once = [
         "swaync"
         # "albert"
-        "discord"
+        "vesktop"
         "steam"
         "zen"
         "hypridle"

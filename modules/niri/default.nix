@@ -44,7 +44,11 @@ in
 
           input = {
             focus-follows-mouse.enable = true;
-            focus-follows-mouse.max-scroll-amount = "0%";
+            focus-follows-mouse.max-scroll-amount = "30%";
+            mouse = {
+              accel-profile = "flat";
+              accel-speed = 0;
+            };
           };
 
           window-rules = [
@@ -67,14 +71,14 @@ in
           layout = {
             gaps = 10;
 
-            struts =
-              let
-                s = 16;
-              in
-              {
-                left = s;
-                right = s;
-              };
+            # struts =
+            #   let
+            #     s = 16;
+            #   in
+            #   {
+            #     left = s;
+            #     right = s;
+            #   };
 
             default-column-width = {
               proportion = 1.0 / 2.0;
@@ -110,10 +114,12 @@ in
               "Mod+L".action = focus-column-right;
 
               "Mod+F".action = maximize-column;
+              "Mod+Shift+F".action = fullscreen-window;
 
               "Print".action.screenshot = [ ];
+              "Mod+Home".action.screenshot = [ ];
 
-              "Mod+Escape".action.spawn = "wlogout";
+              "Mod+Escape".action = spawn "wlogout";
 
               # Apps
               "Mod+X".action = spawn "ghostty";

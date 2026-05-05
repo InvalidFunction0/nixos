@@ -83,6 +83,13 @@ in
     script = "flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo     ";
   };
 
+  programs.obs-studio = {
+    enable = true;
+    plugins = with pkgs.obs-studio-plugins; [
+      obs-pipewire-audio-capture
+    ];
+  };
+
   environment.systemPackages =
     with pkgs;
     [
@@ -127,6 +134,9 @@ in
       steamcmd
       docker-compose
       protontricks
+      vesktop
+      vital
+      blender
     ]
     ++ [
       zlEq
@@ -168,6 +178,20 @@ in
     home.packages = [
       pkgs.kdePackages.qtdeclarative
     ];
+
+    #   programs.vesktop = {
+    #     enable = true;
+    #     #
+    #     # vencord.settings = {
+    #     #   autoUpdate = false;
+    #     #   autoUpdateNotification = true;
+    #     #   notifyAboutUpdates = true;
+    #     # };
+    #     #
+    #     # plugins = {
+    #     #   PinDMs.enabled = true;
+    #     # };
+    #   };
   };
 
   services.udev = {

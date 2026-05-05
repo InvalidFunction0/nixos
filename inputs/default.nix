@@ -46,6 +46,12 @@ let
       niri = {
         url = "github:sodiboo/niri-flake";
       };
+
+      qml-niri = {
+        url = "github:imiric/gml-niri/main";
+        inputs.nixpkgs.follows = "nixpkgs";
+        # inputs.quickshell.follows = "quickshell";
+      };
     };
 
     system = {
