@@ -137,6 +137,7 @@ in
       vesktop
       vital
       blender
+      typstyle
     ]
     ++ [
       zlEq

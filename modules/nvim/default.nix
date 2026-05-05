@@ -288,12 +288,13 @@ in
                 rustfmt.command = lib.getExe pkgs.rustfmt;
                 ruff.command = lib.getExe pkgs.ruff;
                 codespell.command = lib.getExe pkgs.codespell;
-                typstyle.command = {
+                typstyle = {
                   command = lib.getExe pkgs.typstyle;
                   args = [
                     "--wrap-text"
-                    "--line-width"
+                    "--column"
                     "80"
+                    "$FILENAME"
                   ];
                 };
               };
