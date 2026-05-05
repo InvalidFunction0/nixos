@@ -1,4 +1,6 @@
 # Do not modify! This file is generated.
+# One exception: If you use a different template than "flake.in.nix" set
+#                its relative path through the first argument to inputs.flakegen.
 
 {
   inputs = {
@@ -13,6 +15,7 @@
     };
     hyprland.url = "github:hyprwm/Hyprland";
     musnix.url = "github:musnix/musnix";
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     nh = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/nh";
@@ -46,8 +49,19 @@
     };
   };
   nixConfig = {
-    trusted-public-keys = [ "cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM=" "nixpkgs.cachix.org-1:q91R6hxbwFvDqTSDKwDAV4T5PxqXGxswD8vhONFMeOE=" "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" "nix-citizen.cachix.org-1:lPMkWc2X8XD4/7YPEEwXKKBg+SVbYTVrAaLA2wQTKCo=" "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc=" ];
-    trusted-substituters = [ "https://cachix.cachix.org" "https://nixpkgs.cachix.org" "https://vicinae.cachix.org" ];
+    trusted-public-keys = [
+      "cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM="
+      "nixpkgs.cachix.org-1:q91R6hxbwFvDqTSDKwDAV4T5PxqXGxswD8vhONFMeOE="
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+      "nix-citizen.cachix.org-1:lPMkWc2X8XD4/7YPEEwXKKBg+SVbYTVrAaLA2wQTKCo="
+      "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="
+    ];
+    trusted-substituters = [
+      "https://cachix.cachix.org"
+      "https://nixpkgs.cachix.org"
+      "https://vicinae.cachix.org"
+    ];
   };
   outputs = inputs: inputs.flakegen ./_outputs.nix inputs;
 }
+

@@ -55,6 +55,34 @@ in
 
   # nixpkgs.overlays = [ inputs.audio.overlays.default ];
 
+  # for protonvpn
+  networking.firewall.checkReversePath = false;
+  networking.firewall.enable = true;
+  networking.firewall.allowedTCPPorts =
+    # Ark SE
+    [ 27020 ];
+  networking.firewall.allowedUDPPorts =
+    # Ark SE
+    [
+      27015 # Steam server browser query
+      7777 # Game client
+      7778 # Raw UDP (always client + 1)
+    ];
+
+  networking.nameservers = [
+    "1.1.1.1"
+    "8.8.8.8"
+  ];
+
+  qt.enable = true;
+
+  services.flatpak.enable = true;
+  systemd.services.flatpak-repo = {
+    wantedBy = [ "multi-user.target" ];
+    path = [ pkgs.flatpak ];
+    script = "flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo     ";
+  };
+
   environment.systemPackages =
     with pkgs;
     [
@@ -76,7 +104,29 @@ in
       python314
       cabextract
       android-tools
-      inputs.nix-citizen.packages.${system}.star-citizen
+      android-studio
+      inputs.nix-citizen.packages.${system}.star-citizen-umu
+      chromium
+      pv
+      rsync
+      protonvpn-gui
+      mumble
+      typst
+      ffmpeg
+      cookiecutter
+      gcc
+      vlc
+      r2modman
+      qmk
+      qmk-udev-rules
+      qmk_hid
+      via
+      vial
+      element-desktop
+      element-call
+      steamcmd
+      docker-compose
+      protontricks
     ]
     ++ [
       zlEq
@@ -91,15 +141,44 @@ in
   nixpkgs.config.android_sdk.accept_license = true;
 
   # yabridge config
-  home-manager.users.${mainUser}.xdg.configFile."yabridgectl/config.toml".text = ''
-    plugin_dirs = [
-      "/home/ayaan/winePlugins/drive_c/Program Files/Common Files/CLAP/",
-      "/home/ayaan/winePlugins/drive_c/Program Files/Common Files/VST3/"
-    ]
-    vst2_location = 'centralized'
-    no_verify = false
-    blacklist = []
-  '';
+  home-manager.users.${mainUser} = {
+    xdg.configFile."yabridgectl/config.toml".text = ''
+      plugin_dirs = [
+        "/home/ayaan/winePlugins/drive_c/Program Files/Common Files/CLAP/",
+        "/home/ayaan/winePlugins/drive_c/Program Files/Common Files/VST3/"
+      ]
+      vst2_location = 'centralized'
+      no_verify = false
+      blacklist = []
+    '';
+
+    home.sessionVariables = {
+      ANDROID_HOME = "$HOME/Android/Sdk/";
+    };
+
+    home.sessionPath = [
+      "$ANDROID_HOME/platform-tools"
+      "$ANDROID_HOME/tools"
+      "$ANDROID_HOME/tools/bin"
+      "$ANDROID_HOME/emulator"
+    ];
+
+    qt.enable = true;
+    programs.quickshell.enable = true;
+    home.packages = [
+      pkgs.kdePackages.qtdeclarative
+    ];
+  };
+
+  services.udev = {
+    packages = with pkgs; [
+      qmk
+      qmk-udev-rules
+      qmk_hid
+      via
+      vial
+    ];
+  };
 
   networking.hostName = "mainSystem";
 
