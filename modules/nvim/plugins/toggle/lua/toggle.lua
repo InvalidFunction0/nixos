@@ -25,12 +25,12 @@ function Toggle.toggleBool(str)
 	local yankedWord = vim.fn.getreg('"')
 	local replacement = toggleTable[yankedWord]
 
-	if word == nil then
+	if replacement == nil then
 		vim.notify("you can't do this to that", vim.log.levels.INFO)
 	end
 
 	xpcall(function()
-		vim.cmd("normal! ciw" .. word)
+		vim.cmd("normal! ciw" .. replacement)
 	end, errorHandler)
 end
 

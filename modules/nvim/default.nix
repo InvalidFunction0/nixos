@@ -49,7 +49,7 @@ in
         extraPlugins = [
           (pkgs.vimUtils.buildVimPlugin {
             name = "toggle-bool";
-            src = ./plugins/toggle/;
+            src = ./plugins/toggle;
           })
         ];
 
@@ -288,7 +288,14 @@ in
                 rustfmt.command = lib.getExe pkgs.rustfmt;
                 ruff.command = lib.getExe pkgs.ruff;
                 codespell.command = lib.getExe pkgs.codespell;
-                typstyle.command = lib.getExe pkgs.typstyle;
+                typstyle.command = {
+                  command = lib.getExe pkgs.typstyle;
+                  args = [
+                    "--wrap-text"
+                    "--line-width"
+                    "80"
+                  ];
+                };
               };
             };
           };
@@ -483,6 +490,12 @@ in
             mode = "v";
             action = "<gv";
             key = "<";
+          }
+
+          {
+            mode = "n";
+            action = "<cmd>ToggleBool<CR>";
+            key = "<leader>tb";
           }
         ];
       };
