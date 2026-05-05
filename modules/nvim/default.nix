@@ -44,6 +44,13 @@ in
         defaultEditor = true;
         globals.mapleader = " ";
 
+        extraPlugins = [
+          (pkgs.vimUtils.buildVimPlugin {
+            name = "toggle-bool";
+            src = ./plugins/toggle/;
+          })
+        ];
+
         opts = {
           number = true;
           relativenumber = true;
