@@ -290,11 +290,10 @@ in
                 codespell.command = lib.getExe pkgs.codespell;
                 typstyle = {
                   command = lib.getExe pkgs.typstyle;
-                  args = [
+                  prepend_args = [
                     "--wrap-text"
                     "--column"
                     "80"
-                    "$FILENAME"
                   ];
                 };
               };
@@ -368,11 +367,11 @@ in
               workspaces = [
                 {
                   name = "main";
-                  path = "~/git/notes/Vault";
+                  path = "~/git/notes/old/Vault";
                 }
                 {
                   name = "test vault";
-                  path = "~/git/notes/test vault";
+                  path = "~/git/notes/old/test vault";
                 }
               ];
               legacy_commands = false;
