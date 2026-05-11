@@ -243,6 +243,7 @@ in
                 };
                 qml = [ "qmlformat" ];
                 typst = [ "typstyle" ];
+                java = [ "google-java-format" ];
 
                 "*" = [ "codespell" ];
                 "_" = [ "prettier" ];
@@ -253,7 +254,7 @@ in
               };
 
               format_on_save = {
-                timeout_ms = 300;
+                timeout_ms = 500;
                 lsp_format = "fallback";
               };
               format_after_save = {
@@ -265,15 +266,13 @@ in
               notify_no_formatters = false;
 
               formatters = {
-                prettier = {
-                  command = lib.getExe pkgs.prettier;
-                  prepend_args = [
-                    "--print-width"
-                    "80"
-                    "--config-precedence"
-                    "prefer-file"
-                  ];
-                };
+                codespell.command = lib.getExe pkgs.codespell;
+                google-java-format.command = lib.getExe pkgs.google-java-format;
+                nixfmt.command = lib.getExe pkgs.nixfmt-rfc-style;
+                ruff.command = lib.getExe pkgs.ruff;
+                rustfmt.command = lib.getExe pkgs.rustfmt;
+                stylua.command = lib.getExe pkgs.stylua;
+
                 dioxusfmt = {
                   command = lib.getExe pkgs.dioxus-cli;
                   args = [
@@ -283,11 +282,17 @@ in
                   ];
                   stdin = false;
                 };
-                stylua.command = lib.getExe pkgs.stylua;
-                nixfmt.command = lib.getExe pkgs.nixfmt-rfc-style;
-                rustfmt.command = lib.getExe pkgs.rustfmt;
-                ruff.command = lib.getExe pkgs.ruff;
-                codespell.command = lib.getExe pkgs.codespell;
+
+                prettier = {
+                  command = lib.getExe pkgs.prettier;
+                  prepend_args = [
+                    "--print-width"
+                    "80"
+                    "--config-precedence"
+                    "prefer-file"
+                  ];
+                };
+
                 typstyle = {
                   command = lib.getExe pkgs.typstyle;
                   prepend_args = [

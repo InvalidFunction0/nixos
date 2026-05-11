@@ -138,6 +138,7 @@ in
       vital
       blender
       typstyle
+      microsoft-edge
     ]
     ++ [
       zlEq
