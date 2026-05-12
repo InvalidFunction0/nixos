@@ -40,6 +40,11 @@ let
       hyprland = {
         url = "github:hyprwm/Hyprland";
       };
+
+      # hyprland-preview-share-picker = {
+      #   url = "github:WhySoBad/hyprland-preview-share-picker";
+      #   inputs.nixpkgs.follows = "nixpkgs";
+      # };
     };
 
     niri = {
@@ -48,7 +53,7 @@ let
       };
 
       qml-niri = {
-        url = "github:imiric/gml-niri/main";
+        url = "github:imiric/qml-niri";
         inputs.nixpkgs.follows = "nixpkgs";
         # inputs.quickshell.follows = "quickshell";
       };

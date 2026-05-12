@@ -116,7 +116,7 @@ in
       chromium
       pv
       rsync
-      protonvpn-gui
+      proton-vpn
       mumble
       typst
       ffmpeg
@@ -143,6 +143,7 @@ in
     ++ [
       zlEq
       inputs.vicinae.packages.${system}.default
+      # inputs.hyprland-preview-share-picker.packages.${pkgs.stdenv.hostPlatform.system}.default
     ]
     ++ (with inputs.audio.packages.${system}; [
       bitwig-studio6-latest

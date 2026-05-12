@@ -11,7 +11,6 @@
 
     gnome-themes-extra
     kdePackages.qtdeclarative
-    bottles
     wpsoffice
     onlyoffice-desktopeditors
 
