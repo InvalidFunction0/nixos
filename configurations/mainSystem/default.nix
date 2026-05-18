@@ -112,7 +112,16 @@ in
       cabextract
       android-tools
       android-studio
-      inputs.nix-citizen.packages.${system}.star-citizen-umu
+      (inputs.nix-citizen.packages.${system}.star-citizen-umu.override {
+        gameScopeEnable = true;
+        gameScopeArgs = [
+          "-W"
+          "1920"
+          "-H"
+          "1080"
+          "--force-grab-cursor"
+        ];
+      })
       chromium
       pv
       rsync
@@ -139,6 +148,7 @@ in
       blender
       typstyle
       microsoft-edge
+      gamemode
     ]
     ++ [
       zlEq
