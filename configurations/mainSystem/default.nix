@@ -74,6 +74,8 @@ in
     "8.8.8.8"
   ];
 
+  hardware.graphics.enable = true;
+
   qt.enable = true;
 
   services.flatpak.enable = true;
@@ -149,6 +151,8 @@ in
       typstyle
       microsoft-edge
       gamemode
+      qbittorrent
+      plugdata
     ]
     ++ [
       zlEq
