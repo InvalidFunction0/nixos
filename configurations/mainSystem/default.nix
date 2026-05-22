@@ -74,6 +74,8 @@ in
     "8.8.8.8"
   ];
 
+  hardware.graphics.enable = true;
+
   qt.enable = true;
 
   services.flatpak.enable = true;
@@ -112,7 +114,16 @@ in
       cabextract
       android-tools
       android-studio
-      inputs.nix-citizen.packages.${system}.star-citizen-umu
+      (inputs.nix-citizen.packages.${system}.star-citizen-umu.override {
+        gameScopeEnable = true;
+        gameScopeArgs = [
+          "-W"
+          "1920"
+          "-H"
+          "1080"
+          "--force-grab-cursor"
+        ];
+      })
       chromium
       pv
       rsync
@@ -139,6 +150,9 @@ in
       blender
       typstyle
       microsoft-edge
+      gamemode
+      qbittorrent
+      plugdata
     ]
     ++ [
       zlEq
