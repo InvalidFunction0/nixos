@@ -115,14 +115,6 @@ in
               };
             };
 
-            # indentscope = {
-            #   options = {
-            #     border = "both";
-            #     indent_at_cursor = true;
-            #   };
-            #   symbol = "╎";
-            # };
-
             pairs = {
               modes = {
                 command = true;
@@ -132,6 +124,7 @@ in
             };
 
             surround = { };
+            icons = { };
           };
 
           #
@@ -167,6 +160,7 @@ in
               git.enable = true;
 
               picker = {
+                enable = true;
                 sources = {
                   gh_issue = { };
                   gh_pr = { };
