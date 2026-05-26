@@ -69,6 +69,12 @@
         #     ./hosts/server/configuration.nix
         #   ];
         # };
+
+        server = mkNixOS {
+          extraModules = [
+            self.configs.server
+          ];
+        };
       };
 
       configs = import ./configurations { inherit self; };

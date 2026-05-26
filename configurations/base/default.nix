@@ -124,6 +124,12 @@ in
       shell = mkDefault pkgs.zsh;
     };
 
+    programs.git.enable = true;
+    programs.git.config.user = {
+      name = "InvalidFunction0";
+      email = "ayaan.waqas@outlook.com";
+    };
+
     home-manager.useGlobalPkgs = true;
     home-manager.users.${mainUser} = {
       imports = [
@@ -135,7 +141,6 @@ in
       home.stateVersion = mkDefault config.system.stateVersion;
 
       programs.home-manager.enable = true;
-      programs.git.enable = true;
     };
   };
 

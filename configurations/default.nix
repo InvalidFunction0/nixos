@@ -14,5 +14,8 @@
   # the config for my MacBook
   macbook = import ./macbook self;
 
+  # server
+  server = import ./server self;
+
   _file = ./default.nix;
 }
