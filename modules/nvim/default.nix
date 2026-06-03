@@ -138,12 +138,57 @@ in
           colorizer.enable = true;
           colorizer.settings.user_default_options.names = false;
 
+          # TODO: sort this idiot
           #
           # unsorted as of yet
           #
 
           emmet.enable = true;
           typst-preview.enable = true;
+
+          todo-comments = {
+            enable = true;
+
+            settings = {
+              colors = {
+                default = [
+                  "Identifier"
+                  "#7C3AED"
+                ];
+                error = [
+                  "DiagnosticError"
+                  "ErrorMsg"
+                  "#DC2626"
+                ];
+                hint = [
+                  "DiagnosticHint"
+                  "#10B981"
+                ];
+                info = [
+                  "DiagnosticInfo"
+                  "#2563EB"
+                ];
+                test = [
+                  "Identifier"
+                  "#FF00FF"
+                ];
+                warning = [
+                  "DiagnosticWarn"
+                  "WarningMsg"
+                  "#FBBF24"
+                ];
+              };
+            };
+          };
+
+          typescript-tools = {
+            enable = true;
+            settings.settings = {
+              complete_function_calls = true;
+              code_lens = "on";
+              jsx_close_tag.enable = true;
+            };
+          };
 
           snacks = {
             enable = true;
@@ -211,7 +256,7 @@ in
           };
 
           flutter-tools = {
-            enable = true;
+            enable = false;
 
             settings = {
               decorations.statusline = {
@@ -300,7 +345,7 @@ in
           };
 
           bufferline = {
-            enable = true;
+            enable = false;
 
             settings.options = {
               diagnostics.__raw = "nvim_lsp";
@@ -315,23 +360,23 @@ in
 
               sources.min_keyword_length = 2;
 
-              # sources.providers.luasnip = {
-              #   name = "LuaSnip";
-              #   module = "blink.cmp.sources.luasnip";
-              #   opts = {
-              #     snippets = {
-              #       preset = "luasnip";
-              #     };
-              #     sources = {
-              #       default = [
-              #         "lsp"
-              #         "path"
-              #         "snippets"
-              #         "buffer"
-              #       ];
-              #     };
-              #   };
-              # };
+              sources.providers.luasnip = {
+                name = "LuaSnip";
+                module = "blink.cmp.sources.luasnip";
+                opts = {
+                  snippets = {
+                    preset = "luasnip";
+                  };
+                  sources = {
+                    default = [
+                      "lsp"
+                      "path"
+                      "snippets"
+                      "buffer"
+                    ];
+                  };
+                };
+              };
 
               completion = {
                 documentation.auto_show = true;

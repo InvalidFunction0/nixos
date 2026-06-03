@@ -49,6 +49,7 @@ in
     inherit (pkgs)
       gh
       bun
+      ripgrep
       ;
 
     switch = pkgs.writeShellApplication {
