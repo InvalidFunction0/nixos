@@ -48,8 +48,10 @@ in
     fsType = "exfat";
     options = [
       "nofail"
-      "rw"
+      "rw 0 0"
       "user"
+      "uid=1000"
+      "gid=100"
     ];
   };
 
@@ -96,12 +98,8 @@ in
     with pkgs;
     [
       modrinth-app
-      wineWowPackages.yabridge
-      # (yabridge.override { wine = wineWowPackages.yabridge; })
-      # (yabridgectl.override { wine = wineWowPackages.yabridge; })
       yabridge
       yabridgectl
-      # wineWowPackages.staging
       # vital
       yazi
       playerctl
@@ -153,6 +151,8 @@ in
       gamemode
       qbittorrent
       plugdata
+      qpwgraph
+      libreoffice-fresh
     ]
     ++ [
       zlEq

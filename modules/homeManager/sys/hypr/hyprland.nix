@@ -5,59 +5,58 @@
     xwayland.enable = true;
     systemd.enable = false;
 
+    # configType = "lua";
+
     settings = {
-      "$mod" = "SUPER";
+      # "$mod" = "SUPER";
 
       # binds even when locked
       bindl = [
-        ", XF86AudioPlay, exec, playerctl play-pause"
+        ", XF86AudioPlay, exec, playerctl -i chromium play-pause"
         ", XF86AudioNext, exec, playerctl next"
         ", XF86AudioPrev, exec, playerctl previous"
       ];
 
       bind = [
-        "$mod, X, exec, ghostty"
-        "$mod, B, exec, zen"
-        "$mod, E, exec, nautilus"
-        "$mod, R, exec, ~/.config/rofi/launchers/type-1/launcher.sh"
+        "SUPER, X, exec, ghostty"
+        "SUPER, B, exec, zen-twilight"
+        "SUPER, E, exec, nautilus"
+        "SUPER, R, exec, ~/.config/rofi/launchers/type-1/launcher.sh"
         # "ALT, SPACE, exec, albert toggle"
         "ALT, SPACE, exec, vicinae toggle"
-        "$mod, ESCAPE, exec, wlogout"
+        "SUPER, ESCAPE, exec, wlogout"
 
-        "$mod, Q, killactive"
-        "$mod, F, fullscreen"
-        "$mod, SPACE, togglefloating"
-        "$mod, G, togglegroup"
-        "$mod, T, layoutmsg, togglesplit"
+        "SUPER, Q, killactive"
+        "SUPER, F, fullscreen"
+        "SUPER, SPACE, togglefloating"
+        "SUPER, G, togglegroup"
+        "SUPER, T, layoutmsg, togglesplit"
 
-        "$mod, PRINT, exec, hyprshot --freeze -m region -o ~/screenshots"
-        "$mod, HOME, exec, hyprshot --freeze -m region -o ~/screenshots"
+        "SUPER, PRINT, exec, hyprshot --freeze -m region -o ~/screenshots"
+        "SUPER, HOME, exec, hyprshot --freeze -m region -o ~/screenshots"
 
-        "$mod SHIFT, S, movetoworkspace, special"
-        "$mod, S, togglespecialworkspace,"
-
-        # disable F11 by binding it to nothing
-        # ", F11, exec,"
+        "SUPER SHIFT, S, movetoworkspace, special"
+        "SUPER, S, togglespecialworkspace,"
       ]
       ++ (
-        # bind $mod [shift] {1..9} to [move to] {1..9}
+        # bind `SUPER shift {1..9}` to `move to {1..9}`
         builtins.concatLists (
           builtins.genList (
             i:
             let
-              ws = i + 1;
+              workspace = i + 1;
             in
             [
-              "$mod, code:1${toString i}, workspace, ${toString ws}"
-              "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+              "SUPER, code:1${toString i}, workspace, ${toString workspace}"
+              "SUPER SHIFT, code:1${toString i}, movetoworkspace, ${toString workspace}"
             ]
           ) 9
         )
       );
 
       bindm = [
-        "$mod, mouse:272, movewindow"
-        "$mod, mouse:273, resizewindow"
+        "SUPER, mouse:272, movewindow"
+        "SUPER, mouse:273, resizewindow"
       ];
 
       monitor = [
@@ -76,7 +75,7 @@
       misc = {
         disable_hyprland_logo = true;
         disable_splash_rendering = true;
-        vfr = true;
+        # vfr = true;
       };
 
       general = {
@@ -112,10 +111,10 @@
         "opacity 1.0 override 1.0 override, match:class zen.*"
 
         "workspace 2, match:class zen.*"
-        "workspace 3, match:class discord"
+        "workspace 3, match:class vesktop"
         "workspace 4, match:class steam"
 
-        "no_blur 1, match:class quickshell"
+        # "no_blur 1, match:class quickshell"
 
         # fix for Bitwig losing focus when changing values
         "no_initial_focus 1,match:class ^$,match:title ^$,match:xwayland 1,match:float 1,match:fullscreen 0,match:pin 0"
@@ -131,14 +130,11 @@
         # "albert"
         "vesktop"
         "steam"
-        "zen"
+        "zen-twilight"
         "hypridle"
         "hyprsunset"
         "hyprpaper"
         "quickshell"
-      ];
-
-      exec = [
         "vicinae server"
       ];
 
@@ -150,21 +146,21 @@
         "5, monitor:HDMI-A-1"
       ];
 
-      bezier = [
-        "easeOQuart, 0.25, 1, 0.5, 1"
-        "easeIOQuad, 0.45, 0, 0.55, 1"
-      ];
-
-      animation = [
-        "windows, 1, 8, easeOQuart, popin 80%"
-        "fadeIn, 1, 8, easeOQuart"
-        "windowsOut, 1, 3, easeOQuart, popin 80%"
-        "fadeOut, 1, 3, easeOQuart"
-      ];
+      # bezier = [
+      #   "easeOQuart, 0.25, 1, 0.5, 1"
+      #   "easeIOQuad, 0.45, 0, 0.55, 1"
+      # ];
+      #
+      # animation = [
+      #   "windows, 1, 8, easeOQuart, popin 80%"
+      #   "fadeIn, 1, 8, easeOQuart"
+      #   "windowsOut, 1, 3, easeOQuart, popin 80%"
+      #   "fadeOut, 1, 3, easeOQuart"
+      # ];
 
       dwindle = {
         preserve_split = true;
-        pseudotile = true;
+        # pseudotile = true;
 
         special_scale_factor = 0.75;
       };

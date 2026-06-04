@@ -193,6 +193,9 @@
       material-symbols
       material-icons
       fira
+      corefonts
+      vista-fonts
+      inter
     ];
 
     fontconfig = {
