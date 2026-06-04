@@ -48,7 +48,6 @@ in
     fsType = "exfat";
     options = [
       "nofail"
-      "rw 0 0"
       "user"
       "uid=1000"
       "gid=100"
@@ -153,6 +152,7 @@ in
       plugdata
       qpwgraph
       libreoffice-fresh
+      zellij
     ]
     ++ [
       zlEq
