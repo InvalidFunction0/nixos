@@ -19,6 +19,7 @@ in
     ../../hosts/linux/configuration.nix
 
     self.modules.niri
+    self.modules.hypr.hyprland
   ];
 
   # state version
@@ -27,6 +28,8 @@ in
 
   # base config
   configs.base.enable = true;
+
+  hypr.hyprland.enable = true;
 
   #
   # Module config

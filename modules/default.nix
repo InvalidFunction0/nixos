@@ -6,12 +6,10 @@
   zoxide = import ./zoxide self;
   starship = import ./starship self;
   eza = import ./eza self;
-
   tmux = import ./tmux self;
-
   nvim = import ./nvim self;
-
   niri = import ./niri self;
+  hypr = import ./hypr self;
 
   _file = ./default.nix;
 }
