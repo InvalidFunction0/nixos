@@ -81,14 +81,14 @@ in
                 i:
                 let
                   mod = a: b: a - (b * (a / b));
-                  key = i + 1;
-                  ws = mod (i + 1) 10;
+                  ws = i + 1;
+                  key = mod (i + 1) 10; # so 0 maps to ws 10
                 in
                 [
                   (bind "SUPER + ${toString key}" "hl.dsp.focus({ workspace = ${toString ws} })")
                   (bind "SUPER + SHIFT + ${toString key}" "hl.dsp.window.move({ workspace = ${toString ws} })")
                 ]
-              ) 9
+              ) 10 # 0..9
             ));
 
           monitor =
