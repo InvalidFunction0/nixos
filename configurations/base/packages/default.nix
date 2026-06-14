@@ -27,6 +27,7 @@ in
         cargo
         # gcc
         # gradle
+        nodejs
         rustup
         bun
         git
@@ -45,7 +46,7 @@ in
       inherit (pkgs)
         cmatrix
         cava
-        btop
+        btop-rocm
         htop
         lf
         fzf
@@ -53,6 +54,10 @@ in
         fastfetch
         libnotify
         pciutils
+        ;
+
+      inherit (pkgs.rocmPackages)
+        rocm-smi # for amd gpu on btop
         ;
 
       # temp while I set up nixos modules for them
