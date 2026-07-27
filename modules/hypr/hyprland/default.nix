@@ -35,6 +35,36 @@ in
 
         configType = "lua";
 
+        submaps =
+          let
+            bindf = key: action: flags: {
+              _args = [
+                key
+                (lua action)
+                flags
+              ];
+            };
+            bind = key: action: (bindf key action { });
+
+            execf =
+              key: command: flags:
+              (bindf key "hl.dsp.exec_cmd(\"${command}\")" flags);
+            exec = key: command: (execf key command { });
+
+            quitAfter = command: ''
+              function()
+                hl.dispatch(${command})
+                hl.dispatch(hl.dsp.submap("reset"))
+              end
+            '';
+          in
+          {
+            workspace.settings.bind = [
+              (bind "J" (quitAfter "hl.dsp.focus({ workspace = 6 })"))
+              (bind "ESCAPE" "hl.dsp.submap(\"reset\")")
+            ];
+          };
+
         settings = {
           bind =
             let
@@ -63,6 +93,19 @@ in
               (bind "SUPER + Q" "hl.dsp.window.close()")
               (bind "SUPER + F" "hl.dsp.window.fullscreen()")
               (bind "SUPER + SPACE" "hl.dsp.window.float()")
+
+              (bind "SUPER + W" "hl.dsp.submap(\"workspace\")")
+
+              (bind "SUPER + G" "function()
+                local gamma_shader = os.getenv('HOME') .. '/.config/hypr/gamma.glsl'
+                local current_shader = hl.get_config('decoration.screen_shader')
+
+                if current_shader == gamma_shader then
+                  hl.config({decoration = {screen_shader = ''}})
+                else
+                  hl.config({decoration = {screen_shader = gamma_shader}})
+                end
+              end")
 
               (exec "SUPER + HOME" "hyprshot --freeze -m region -o ~/screenshots/")
 
@@ -120,6 +163,8 @@ in
             misc = {
               disable_hyprland_logo = true;
               disable_splash_rendering = true;
+              middle_click_paste = false;
+              vrr = 2;
             };
 
             general = {

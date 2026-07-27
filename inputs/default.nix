@@ -23,6 +23,13 @@ let
       url = "github:nix-community/nh";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
+
+    nix-gaming-edge = {
+      url = "github:powerofthe69/nix-gaming-edge";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   gaming = {
@@ -87,6 +94,16 @@ let
 
       vicinae = {
         url = "github:vicinaehq/vicinae";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
+
+      sidra = {
+        url = "github:wimpysworld/sidra";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
+
+      sone = {
+        url = "github:lullabyX/sone";
         inputs.nixpkgs.follows = "nixpkgs";
       };
     };

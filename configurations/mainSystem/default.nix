@@ -8,11 +8,10 @@ self:
 }:
 let
   inherit (lib) attrValues;
-
-  zlEq = pkgs.callPackage ./pkgs/zlEqualizer.nix { };
 in
 {
   imports = [
+    (import ./packages self)
     self.configs.base
     ./hardware-configuration.nix
 
@@ -59,12 +58,25 @@ in
 
   # nixpkgs.overlays = [ inputs.audio.overlays.default ];
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-39.8.10"
+  ];
+
+  nixpkgs.overlays = [
+    inputs.nix-cachyos-kernel.overlays.pinned
+    inputs.nix-gaming-edge.overlays.default
+  ];
+
+  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore;
+
   # for protonvpn
   networking.firewall.checkReversePath = false;
   networking.firewall.enable = true;
   networking.firewall.allowedTCPPorts =
     # Ark SE
-    [ 27020 ];
+    [ 27020 ]
+    # bun dev
+    ++ [ 5173 ];
   networking.firewall.allowedUDPPorts =
     # Ark SE
     [
@@ -82,6 +94,53 @@ in
 
   qt.enable = true;
 
+  security.pam.loginLimits = [
+    {
+      domain = "*";
+      item = "nofile";
+      type = "-";
+      value = "524288";
+    }
+    {
+      domain = "root";
+      item = "nofile";
+      type = "-";
+      value = "524288";
+    }
+    {
+      domain = "@audio";
+      item = "nofile";
+      type = "-";
+      value = "524288";
+    }
+  ];
+  systemd.services."user@".serviceConfig.LimitNOFILE = "524288";
+  systemd.settings.Manager = {
+    DefaultLimitNOFILE = "8192:524288";
+  };
+  systemd.user.settings.Manager = {
+    DefaultLimitNOFILE = "8192:524288";
+  };
+  boot.kernel.sysctl = {
+    "fs.file-max" = 2097152;
+    "fs.nr-open" = 1048567;
+  };
+
+  programs.nix-ld = {
+    enable = true;
+    # libraries = pkgs.steam-run.fhsenv.args.multiPkgs pkgs;
+    libraries = with pkgs; [
+      libxcursor
+      libxrandr
+      libxi
+      libx11
+      libxtst
+      libxcb
+      libglvnd
+      glfw
+    ];
+  };
+
   services.flatpak.enable = true;
   systemd.services.flatpak-repo = {
     wantedBy = [ "multi-user.target" ];
@@ -95,78 +154,6 @@ in
       obs-pipewire-audio-capture
     ];
   };
-
-  environment.systemPackages =
-    with pkgs;
-    [
-      modrinth-app
-      yabridge
-      yabridgectl
-      # vital
-      yazi
-      playerctl
-      dioxus-cli
-      sqlite
-      flutter
-      devenv
-      gamescope
-      python314
-      cabextract
-      android-tools
-      android-studio
-      (inputs.nix-citizen.packages.${system}.star-citizen-umu.override {
-        gameScopeEnable = true;
-        gameScopeArgs = [
-          "-W"
-          "1920"
-          "-H"
-          "1080"
-          "--force-grab-cursor"
-        ];
-      })
-      chromium
-      pv
-      rsync
-      proton-vpn
-      mumble
-      typst
-      ffmpeg
-      cookiecutter
-      gcc
-      vlc
-      r2modman
-      qmk
-      qmk-udev-rules
-      qmk_hid
-      via
-      vial
-      element-desktop
-      element-call
-      steamcmd
-      docker-compose
-      protontricks
-      vesktop
-      vital
-      blender
-      typstyle
-      microsoft-edge
-      gamemode
-      qbittorrent
-      plugdata
-      qpwgraph
-      libreoffice-fresh
-      zellij
-    ]
-    ++ [
-      zlEq
-      inputs.vicinae.packages.${system}.default
-      # inputs.hyprland-preview-share-picker.packages.${pkgs.stdenv.hostPlatform.system}.default
-    ]
-    ++ (with inputs.audio.packages.${system}; [
-      bitwig-studio6-latest
-      # grainbow
-      # paulxstretch
-    ]);
 
   nixpkgs.config.android_sdk.accept_license = true;
 
@@ -198,6 +185,10 @@ in
     home.packages = [
       pkgs.kdePackages.qtdeclarative
     ];
+
+    programs.prismlauncher = {
+      enable = true;
+    };
 
     #   programs.vesktop = {
     #     enable = true;

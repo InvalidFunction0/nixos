@@ -46,7 +46,7 @@
 
   boot.kernel.sysctl = {
     "vm.max_map_count" = 32000000;
-    "fs.file-max" = 524288;
+    # "fs.file-max" = 524288;
   };
 
   nix.settings = {
@@ -64,10 +64,10 @@
 
   programs.dconf.enable = true;
 
-  virtualisation.libvirtd = {
-    enable = true;
-    qemu.swtpm.enable = true;
-  };
+  # virtualisation.libvirtd = {
+  #   enable = true;
+  #   qemu.swtpm.enable = true;
+  # };
 
   programs.virt-manager.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
@@ -183,6 +183,7 @@
 
     extraCompatPackages = with pkgs; [
       proton-ge-bin
+      proton-cachyos # from the nix-gaming-edge overlay
     ];
   };
 

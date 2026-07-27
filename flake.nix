@@ -21,6 +21,7 @@
       url = "github:nix-community/nh";
     };
     niri.url = "github:sodiboo/niri-flake";
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
     nix-citizen = {
       inputs.nix-gaming.follows = "nix-gaming";
       url = "github:LovingMelody/nix-citizen";
@@ -30,6 +31,10 @@
       url = "github:lnl7/nix-darwin";
     };
     nix-gaming.url = "github:fufexan/nix-gaming";
+    nix-gaming-edge = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:powerofthe69/nix-gaming-edge";
+    };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixvim = {
       inputs.nixpkgs.follows = "nixpkgs";
@@ -38,6 +43,14 @@
     qml-niri = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:imiric/qml-niri";
+    };
+    sidra = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:wimpysworld/sidra";
+    };
+    sone = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:lullabyX/sone";
     };
     stylix = {
       inputs.nixpkgs.follows = "nixpkgs";
@@ -51,10 +64,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:0xc000022070/zen-browser-flake";
     };
-  };
-  nixConfig = {
-    trusted-public-keys = [ "cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM=" "nixpkgs.cachix.org-1:q91R6hxbwFvDqTSDKwDAV4T5PxqXGxswD8vhONFMeOE=" "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" "nix-citizen.cachix.org-1:lPMkWc2X8XD4/7YPEEwXKKBg+SVbYTVrAaLA2wQTKCo=" "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc=" "cache.flakehub.com-3:hJuILl5sVK4iKm86JzgdXW12Y2Hwd5G07qKtHTOcDCM=" ];
-    trusted-substituters = [ "https://cachix.cachix.org" "https://nixpkgs.cachix.org" "https://vicinae.cachix.org" "https://install.determinate.systems" ];
   };
   outputs = inputs: inputs.flakegen ./_outputs.nix inputs;
 }

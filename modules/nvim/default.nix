@@ -145,6 +145,7 @@ in
 
           emmet.enable = true;
           typst-preview.enable = true;
+          ts-comments.enable = true;
 
           todo-comments = {
             enable = true;
@@ -211,6 +212,7 @@ in
                   gh_pr = { };
                 };
               };
+
             };
           };
 
@@ -405,7 +407,7 @@ in
             settings = {
               completion = {
                 min_chars = 2;
-                blink = true;
+                # blink = true;
               };
               new_notes_location = "current_dir";
               workspaces = [
@@ -482,66 +484,46 @@ in
 
               # qml
               qmlls.enable = true;
-              qmlls.config.cmd = [
-                "qmlls"
-                "-E"
-              ];
+              qmlls.cmd = [ "qmlls" ];
             };
           };
         };
 
-        keymaps = [
-          {
-            action = "<cmd>nohl<CR>";
-            key = "<leader>h";
-          }
+        keymaps =
+          let
+            keymap = mode: key: action: {
+              mode = mode;
+              key = key;
+              action = action;
+            };
 
-          {
-            action = "<cmd>Telescope find_files<CR>";
-            key = "<leader>ff";
-          }
-          {
-            action = "<cmd>Telescope live_grep<CR>";
-            key = "<leader>g";
-          }
+            mapcmd = key: action: (keymap "n" key "<cmd>${action}<CR>");
+          in
+          [
+            (mapcmd "<leader>h" "nohl")
 
-          {
-            action = "<cmd>Oil<CR>";
-            key = "<leader>e";
-          }
+            (mapcmd "<leader>ff" "Telescope find_files")
+            (mapcmd "<leader>g" "Telescope live_grep")
+            (mapcmd "<leader>fb" "Telescope buffers")
 
-          {
-            action = "<cmd>bnext<CR>";
-            key = "<M-k>";
-          }
-          {
-            action = "<cmd>bprev<CR>";
-            key = "<M-j>";
-          }
+            (mapcmd "<leader>e" "Oil")
 
-          {
-            action = "<cmd>lua Snacks.git.blame_line()<CR>";
-            key = "<leader>b";
-          }
+            # {
+            #   action = "<cmd>bnext<CR>";
+            #   key = "<M-k>";
+            # }
+            # {
+            #   action = "<cmd>bprev<CR>";
+            #   key = "<M-j>";
+            # }
 
-          {
-            mode = "v";
-            # so that the selection remains
-            action = ">gv";
-            key = ">";
-          }
-          {
-            mode = "v";
-            action = "<gv";
-            key = "<";
-          }
+            (mapcmd "<leader>b" "lua Snacks.git.blame_line()")
 
-          {
-            mode = "n";
-            action = "<cmd>ToggleBool<CR>";
-            key = "<leader>tb";
-          }
-        ];
+            (mapcmd "<leader>tb" "ToggleBool")
+
+            (keymap "v" ">" ">gv")
+            (keymap "v" "<" "<gv")
+          ];
       };
     };
   };
