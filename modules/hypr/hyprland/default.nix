@@ -37,19 +37,14 @@ in
 
         submaps =
           let
-            bindf = key: action: flags: {
+            bind = key: action: {
               _args = [
                 key
                 (lua action)
-                flags
+                { }
               ];
             };
-            bind = key: action: (bindf key action { });
-
-            execf =
-              key: command: flags:
-              (bindf key "hl.dsp.exec_cmd(\"${command}\")" flags);
-            exec = key: command: (execf key command { });
+            # bind = key: action: (bindf key action { });
 
             quitAfter = command: ''
               function()
@@ -57,11 +52,25 @@ in
                 hl.dispatch(hl.dsp.submap("reset"))
               end
             '';
+
+            focus = key: ws: (bind key (quitAfter "hl.dsp.focus({ workspace = ${toString ws} })"));
+            moveto = key: ws: (bind key (quitAfter "hl.dsp.window.move({ workspace = ${toString ws} })"));
+            ws = key: ws: [
+              (focus key ws)
+              (moveto "SHIFT + ${key}" ws)
+            ];
           in
           {
-            workspace.settings.bind = [
-              (bind "J" (quitAfter "hl.dsp.focus({ workspace = 6 })"))
-              (bind "ESCAPE" "hl.dsp.submap(\"reset\")")
+            workspace.settings.bind = builtins.concatLists [
+              (ws "S" 6) # Star
+              (ws "N" 7) # Nix config
+              (ws "D" 8) # General dev
+              (ws "B" 10) # bg tasks
+
+              [
+                (bind "ESCAPE" "hl.dsp.submap(\"reset\")")
+                (bind "SUPER + W" "hl.dsp.submap(\"reset\")")
+              ]
             ];
           };
 
@@ -86,7 +95,8 @@ in
               (exec "SUPER + X" "ghostty")
               (exec "SUPER + B" "zen-twilight")
               (exec "SUPER + E" "nautilus")
-              (exec "SUPER + R" "~/.config/rofi/launchers/type-1/launcher.sh")
+              # (exec "SUPER + R" "~/.config/rofi/launchers/type-1/launcher.sh")
+              (exec "SUPER + R" "qs ipc call launcher toggle")
               (exec "ALT + SPACE" "vicinae toggle")
               (exec "SUPER + ESCAPE" "wlogout")
 
@@ -247,6 +257,7 @@ in
             in
             [
               (rule "wlogout-noblur" { namespace = "logout_dialog"; } { blur = false; })
+              # (rule "qs-blur" { namespace = "quickshell"; } { blur = true; })
             ];
 
           on = {

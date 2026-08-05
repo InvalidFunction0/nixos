@@ -2,15 +2,19 @@ self:
 { pkgs, inputs, ... }:
 let
   zlEq = pkgs.callPackage ./zlEqualizer.nix { };
+  swiftpointX1 = pkgs.callPackage ./swiftpointX1.nix { };
 in
 {
+  services.udev.packages = [ swiftpointX1 ];
   environment.systemPackages =
     with pkgs;
     [
       modrinth-app
       yabridge
       yabridgectl
-      wine64
+      # wine
+      # wineWow64Packages.stableFull
+      wineWow64Packages.yabridge
       # vital
       yazi
       playerctl
@@ -95,9 +99,14 @@ in
       lutris
       protonup-qt
       mprime
+      decent-sampler
+      fuzzel
+      jq
+      unityhub
     ]
     ++ [
       zlEq
+      swiftpointX1
       inputs.vicinae.packages.${pkgs.stdenv.hostPlatform.system}.default
       # inputs.hyprland-preview-share-picker.packages.${pkgs.stdenv.hostPlatform.system}.default
       inputs.sidra.packages.${pkgs.stdenv.hostPlatform.system}.default

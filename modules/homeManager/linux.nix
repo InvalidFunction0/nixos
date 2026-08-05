@@ -10,10 +10,10 @@
   home.pointerCursor = {
     gtk.enable = true;
     x11.enable = true;
-    # name = "Afterglow-Recolored-Dracula-Purple";
-    # package = pkgs.afterglow-cursors-recolored;
-    name = "Catppuccin-Macchiato-Dark-Cursors";
-    package = pkgs.catppuccin-cursors.macchiatoDark;
+    name = "Afterglow-Recolored-Dracula-Purple";
+    package = pkgs.afterglow-cursors-recolored;
+    # name = "Catppuccin-Macchiato-Dark-Cursors";
+    # package = pkgs.catppuccin-cursors.macchiatoDark;
     size = 32;
     hyprcursor = {
       enable = true;

@@ -64,7 +64,7 @@ in
 
   nixpkgs.overlays = [
     inputs.nix-cachyos-kernel.overlays.pinned
-    inputs.nix-gaming-edge.overlays.default
+    inputs.nix-gaming-edge.overlays.proton-cachyos
   ];
 
   boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore;

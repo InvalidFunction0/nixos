@@ -22,7 +22,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    home-manager.users.${mainUser} = {
+    home-manager.users.${mainUser} = { config, ... }: {
       imports = [
         nixvim.homeModules.nixvim
       ];
@@ -54,6 +54,26 @@ in
         ];
 
         package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+
+        filetype.extension.qml = "qml";
+
+        autoCmd = [
+          {
+            event = "FileType";
+            pattern = "qml";
+            callback.__raw = ''
+              function()
+                vim.bo.indentexpr = ""   -- clear treesitter's indentexpr
+                vim.bo.cindent = false
+                vim.bo.smartindent = true
+                vim.bo.shiftwidth = 4
+                vim.bo.tabstop = 4
+                vim.bo.softtabstop = 4
+                vim.bo.expandtab = true
+              end
+            '';
+          }
+        ];
 
         opts = {
           number = true;
@@ -239,7 +259,9 @@ in
               highlight.enable = true;
               incremental_selection.enable = true;
               indent.enable = true;
+              indent.disable = [ "qml" ];
             };
+            # grammarPackages = with config.plugins.treesitter.package.builtGrammars; [ ];
           };
 
           rustaceanvim = {
